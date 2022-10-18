@@ -22,5 +22,17 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
     path('homepage/', include('cars.urls')),
-    path('api/tiers/', include('cars.urls')),
+    path('api/tiers/', views.get_tiers),
+    path('api/frames/', views.get_frames),
+    path('api/powercores/', views.get_powercores),
+    path('api/thrusters/', views.get_thrusters),
+    path('api/armors/', views.get_armors),
+    path('api/computers/', views.get_computers),
+    path('api/crewquarters/', views.get_crewquarters),
+    path('api/driftengines/', views.get_driftengines),
+    path('api/expansionbays/', views.get_expansionbays),
+    path('api/security', views.get_security),
+    path('api/sensors/', views.get_sensors),
+    path('api/shields/', views.get_shields),
+    path('api/weapons', views.get_weapons)
 ]

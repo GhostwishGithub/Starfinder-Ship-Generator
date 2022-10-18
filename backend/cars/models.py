@@ -30,7 +30,7 @@ class PowerCores(models.Model):
     cost = models.IntegerField()
 
 class Thrusters(models.Model):
-    thurster = models.CharField(max_length=30)
+    thruster = models.CharField(max_length=30)
     size = models.CharField(max_length=1)
     speed = models.IntegerField()
     piloting = models.IntegerField()

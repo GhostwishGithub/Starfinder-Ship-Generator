@@ -6,7 +6,7 @@ from .models import Tiers, Frames, PowerCores, Thrusters, Armors, Computers, Cre
 class TiersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tiers
-        fields = ['tier', 'bpulimiter', 'special']
+        fields = ['tier', 'bpuLimiter', 'special']
         depth = 1
 
 class FramesSerializer(serializers.ModelSerializer):
