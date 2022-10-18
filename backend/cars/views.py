@@ -2,8 +2,99 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Car
-from .serializers import CarSerializer
+from .models import Car, Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons
+from .serializers import CarSerializer, TiersSerializer, FramesSerializer, PowerCoresSerializer, ThrustersSerializer, ArmorsSerializer, ComputersSerializer, CrewQuartersSerializer, DriftEnginesSerializer, ExpansionBaysSeralizer, SecuritySerializer, SensorsSerializer, ShieldsSerializer, WeaponsSerializer
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_tiers(request):
+    tier = Tiers.objects.all()
+    serializer = TiersSerializer(tier, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_frames(request):
+    frame = Frames.objects.all()
+    serializer = FramesSerializer(frame, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_powercores(request):
+    powercores = PowerCores.objects.all()
+    serializer = PowerCoresSerializer(powercores, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_thrusters(request):
+    thrusters = Thrusters.objects.all()
+    serializer = ThrustersSerializer(thrusters, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_armors(request):
+    armor = Armors.objects.all()
+    serializer = ArmorsSerializer(armor, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_computers(request):
+    computer = Computers.objects.all()
+    serializer = ComputersSerializer(computer, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_crewquarters(request):
+    crewquarters = CrewQuarters.objects.all()
+    serializer = CrewQuartersSerializer(crewquarters, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_driftengines(request):
+    driftengine = DriftEngines.objects.all()
+    serializer = DriftEnginesSerializer(driftengine, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_expansionbays(request):
+    expansionbay = ExpansionBays.objects.all()
+    serializer = ExpansionBaysSeralizer(expansionbay, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_security(request):
+    security = Security.objects.all()
+    serializer = SecuritySerializer(security, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_sensors(request):
+    sensors = Sensors.objects.all()
+    serializer = SensorsSerializer(sensors, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_shields(request):
+    shields = Shields.objects.all()
+    serializer = ShieldsSerializer(shields, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_weapons(request):
+    weapons = Weapons.objects.all()
+    serializer = WeaponsSerializer(weapons, many=True)
+    return Response(serializer.data)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 

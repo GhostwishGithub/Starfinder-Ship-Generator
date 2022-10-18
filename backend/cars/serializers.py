@@ -1,4 +1,4 @@
-from jmespath import search
+#from jmespath import search <- no idea why this is even here. Caused errors. Commented it out and things went back to normal
 from rest_framework import serializers
 from .models import Car
 from .models import Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons

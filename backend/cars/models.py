@@ -4,7 +4,7 @@ from authentication.models import User
 
 # Create your models here.
 
-class Tiers(models.model):
+class Tiers(models.Model):
     tier = models.IntegerField()
     bpuLimiter = models.IntegerField()
     special = models.IntegerField() #noting this here: this can be a single digit multiplied later on to add HP
@@ -76,6 +76,7 @@ class ExpansionBays(models.Model):
 class Security(models.Model):
     security = models.CharField(max_length=60)
     cost = models.IntegerField()
+    #not done here, same as armor and drift engines
 
 class Sensors(models.Model):
     sensors = models.CharField(max_length=36)
@@ -91,16 +92,6 @@ class Shields(models.Model):
     cost = models.IntegerField()
 
 class Weapons(models.Model):
-    '''
-    create a model (like user) to represent the weapon class (light, 
-    heavy, capital, with two classes in each: direct and tracking)
-    also realized that the speed field would only be applied to
-    tracking weapons, so there's that
-    actually, really, making it a field should work
-    the web app can just check to make sure it's the right class, right?
-    the type (direct or tracking) can just be another field, no need to 
-    check it
-    '''
     weapon = models.CharField(max_length=48)
     weaponClass = models.CharField(max_length=12) #light, heavy, capital
     weaponType = models.CharField(max_length=12) #direct, tracking
