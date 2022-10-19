@@ -12,9 +12,9 @@ const HomePage = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchTiers = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/tiers/", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -24,7 +24,161 @@ const HomePage = () => {
         console.log(error.response.data);
       }
     };
-    fetchCars();
+    fetchTiers();
+
+    const fetchFrames = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/frames/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchFrames();
+
+    const fetchPowercores = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/powercores/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchPowercores();
+
+    const fetchThrusters = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/thrusters/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchThrusters();
+
+    const fetchArmors = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/armors/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchArmors();
+
+    const fetchComputers = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/computers/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchComputers();
+
+    const fetchCrewquarters = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/crewquarters/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchCrewquarters();
+
+    const fetchDriftengines = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/driftengines/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchDriftengines();
+
+    const fetchExpansionbays = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/expansionbays/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchExpansionbays();
+
+    const fetchSecurity = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/security/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchSecurity();
+
+    const fetchSensors = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/sensors/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchSensors();
+
+    const fetchShields = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/shields/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setCars(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchShields();
   }, [token]);
   return (
     <div className="container">

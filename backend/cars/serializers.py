@@ -80,7 +80,7 @@ class ShieldsSerializer(serializers.ModelSerializer):
 class WeaponsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weapons
-        fields = ['weapon','weaponClass','WeaponType','speed','range','damage','pcu','cost','special']
+        fields = ['weapon','weaponClass','weaponType','speed','range','damage','pcu','cost','special']
 
 
 

@@ -31,8 +31,8 @@ urlpatterns = [
     path('api/crewquarters/', views.get_crewquarters),
     path('api/driftengines/', views.get_driftengines),
     path('api/expansionbays/', views.get_expansionbays),
-    path('api/security', views.get_security),
+    path('api/security/', views.get_security),
     path('api/sensors/', views.get_sensors),
     path('api/shields/', views.get_shields),
-    path('api/weapons', views.get_weapons)
+    path('api/weapons/', views.get_weapons)
 ]
