@@ -210,13 +210,20 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
+      <h1>Starship Generator Protoype for {user.username}!</h1>
+      <select>
+        {tiers &&
+          tiers.map((item) => {
+            return (
+              <option>
+                {/* <p>Tier: {item.tier} BP Limit: {item.bpuLimiter} HP increases: {item.special}</p> */}
+                <p>{JSON.stringify(item)}</p>
+              </option>
+
+            )
+
+            })}
+        </select>
     </div>
   );
 };
