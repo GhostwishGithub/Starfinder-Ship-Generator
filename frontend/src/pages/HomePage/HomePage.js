@@ -10,6 +10,19 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
+  const [tiers, setTier] = useState([]);
+  const [frames, setFrame] = useState([]);
+  const [powercores, setPowercore] = useState([]);
+  const [thrusters, setThruster] = useState([]);
+  const [armors, setArmor] = useState([]);
+  const [computers, setComputer] = useState([]);
+  const [crewquarters, setCrewquarter] = useState([]);
+  const [driftengines, setDriftengine] = useState([]);
+  const [expansionbays, setExpansionbay] = useState([]);
+  const [security, setSecurity] = useState([]);
+  const [sensors, setSensor] = useState([]);
+  const [shields, setShield] = useState([]);
+  const [weapons, setWeapon] = useState([]);
 
   useEffect(() => {
     const fetchTiers = async () => {
@@ -19,7 +32,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setTier(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -33,7 +46,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setFrame(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -47,7 +60,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setPowercore(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -61,7 +74,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setThruster(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -75,7 +88,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setArmor(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -89,7 +102,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setComputer(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -103,7 +116,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setCrewquarter(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -117,7 +130,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setDriftengine(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -131,7 +144,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setExpansionbay(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -145,7 +158,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setSecurity(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -159,7 +172,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setSensor(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -173,12 +186,27 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setShield(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
     };
     fetchShields();
+
+    const fetchWeapons = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/weapons/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setWeapon(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchWeapons();
+
   }, [token]);
   return (
     <div className="container">
