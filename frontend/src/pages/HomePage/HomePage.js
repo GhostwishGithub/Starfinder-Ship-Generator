@@ -32,6 +32,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
+        console.log(response.data)
         setTier(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -214,10 +215,167 @@ const HomePage = () => {
       <select>
         {tiers &&
           tiers.map((item) => {
+            
             return (
               <option>
-                {/* <p>Tier: {item.tier} BP Limit: {item.bpuLimiter} HP increases: {item.special}</p> */}
-                <p>{JSON.stringify(item)}</p>
+                Tier: {item.tier} BP Limit: {item.bpuLimiter} HP increases: {item.special}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {frames &&
+          frames.map((item) => {
+            
+            return (
+              <option>
+                Frame: {item.frame} Size: {item.size} Maneuverability: {item.maneuverability} HP: {item.hp} Increment: {item.increment} DT: {item.dt} CT: {item.ct} Mounts: {item.mounts} Expansion Bays: {item.expansionBays} Minimum Crew: {item.minimumCrew} Maximum Crew: {item.maximumCrew} Cost: {item.cost}
+              </option>
+
+            )
+            
+
+            })}
+        </select>
+        <select>
+        {powercores &&
+          powercores.map((item) => {
+            
+            return (
+              <option>
+                Core: {item.core} Size: {item.size} PCU: {item.pcu} Cost {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {thrusters &&
+          thrusters.map((item) => {
+            
+            return (
+              <option>
+                Thruster: {item.thruster} Size: {item.size} Speed (in hexes): {item.speed} Piloting Modifier: {item.piloting} PCU: {item.pcu} Cost (in BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {armors &&
+          armors.map((item) => {
+            
+            return (
+              <option>
+                Armor: {item.armor} AC: {item.ac} Special: {item.specialTL} TL, {item.specialTD} turn distance
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {computers &&
+          computers.map((item) => {
+            
+            return (
+              <option>
+                Computer {item.computer} Bonus: {item.bonus} Nodes: {item.nodes} PCU: {item.pcu} Cost (in BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {crewquarters &&
+          crewquarters.map((item) => {
+            
+            return (
+              <option>
+                Crew Quarters: {item.crewQuarters} Cost (In BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {driftengines &&
+          driftengines.map((item) => {
+            
+            return (
+              <option>
+                Drift Engine: {item.driftEngine} Engine Rating: {item.rating} Min. PCU {item.pcuRequirement} Max. Size {item.maxSize}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {expansionbays &&
+          expansionbays.map((item) => {
+            
+            return (
+              <option>
+                Expansion Bay: {item.expansionBay} PCU: {item.pcu} Cost (In BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {security &&
+          security.map((item) => {
+            
+            return (
+              <option>
+                Security: {item.security} Cost (In BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {sensors &&
+          sensors.map((item) => {
+            
+            return (
+              <option>
+                Sensors: {item.sensors} Range: {item.range} Modifier: {item.modifier} Cost (in BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {shields &&
+          shields.map((item) => {
+            
+            return (
+              <option>
+                Shield Name: {item.shield} Total SP: {item.totalSP} Regen.: {item.regen} PCU: {item.pcu} Cost(in BP): {item.cost}
+              </option>
+
+            )
+
+            })}
+        </select>
+        <select>
+        {weapons &&
+          weapons.map((item) => {
+            
+            return (
+              <option>
+                Name: {item.weapon} Range: {item.range} Speed: {item.speed} Damage: {item.damage} PCU: {item.pcu} Cost (In BP): {item.cost} Special: {item.special}
               </option>
 
             )
