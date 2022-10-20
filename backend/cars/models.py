@@ -42,7 +42,7 @@ class Armors(models.Model):
     ac = models.IntegerField()
     specialTL = models.IntegerField()
     specialTD = models.IntegerField()
-    #cost tricky tricky needs to have math done outside of table
+    cost = models.IntegerField()
 
 class Computers(models.Model):
     computer = models.CharField(max_length=30)

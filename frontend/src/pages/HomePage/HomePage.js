@@ -24,7 +24,7 @@ const HomePage = () => {
   const [shields, setShield] = useState([]);
   const [weapons, setWeapon] = useState([]);
   const [tierBpuLimiter, setTierBpuLimiter] = useState(0);
-  const [frameCost] = useState(0);
+  const [shipSize, setShipSize] = useState(0);
 
   useEffect(() => {
     const fetchTiers = async () => {
@@ -229,11 +229,20 @@ const HomePage = () => {
     console.log(selectedOption)
     setTierBpuLimiter(selectedOption)
   }
+
   function handleSelectedFrame(event) {
     let selectedOption = event.target.value
-    console.log(selectedOption)
-    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+    //Create an array of items. 
+    let itemsPassedInToArray = selectedOption.split(",")
+    //this splits the array at the comma, effectively making two stings
+    let size = itemsPassedInToArray[0]
+    setShipSize(size)
+    //this takes the first variable, which is still a string
+    let cost = parseInt(itemsPassedInToArray[1])
+    //this takes the second variable, but makes it an Int
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost)
   }
+
   function handleSelectedCore(event) {
     let selectedOption = event.target.value
     console.log(selectedOption)
@@ -244,11 +253,30 @@ const HomePage = () => {
     console.log(selectedOption)
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
   }
-  // function handleSelectedArmor(event) {
-  //   let selectedOption = event.target.value
-  //   console.log(selectedOption)
-  //   setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
-  // }
+
+  function swapShipSize(event) {
+    let sizeCategory = 0
+    if (shipSize = 'Tiny')
+      sizeCategory = 1
+    if (shipSize = 'Small')
+      sizeCategory = 2
+    if (shipSize = 'Medium')
+      sizeCategory = 3
+    if (shipSize = 'Large')
+      sizeCategory = 4
+    if (shipSize = 'Huge')
+      sizeCategory = 5
+    if (shipSize = 'Gargantuan')
+      sizeCategory = 6
+    else (shipSize = 'Colossal')
+      sizeCategory = 7
+    return sizeCategory
+  }
+  function handleSelectedArmor(event) {
+    let selectedOption = event.target.value * swapShipSize
+    console.log(selectedOption)
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+  }
 
 function handleSelectedComputer(event) {
   let selectedOption = event.target.value
@@ -309,7 +337,7 @@ function handleSelectedShield(event) {
         {frames &&
           frames.map((item) => {
             return (
-              <option value={item.cost}>
+              <option value={[item.size, item.cost]}>
                 Frame: {item.frame} Size: {item.size} Maneuverability:{" "}
                 {item.maneuverability} HP: {item.hp} Increment: {item.increment}{" "}
                 DT: {item.dt} CT: {item.ct} Mounts: {item.mounts} Expansion
@@ -342,13 +370,13 @@ function handleSelectedShield(event) {
             );
           })}
       </select>
-      <select>
+      <select onChange={handleSelectedArmor}>
         {armors &&
           armors.map((item) => {
             return (
-              <option>
+              <option value={item.cost}>
                 Armor: {item.armor} AC: {item.ac} Special: {item.specialTL} TL,{" "}
-                {item.specialTD} turn distance
+                {item.specialTD} turn distance Cost (in BP): {item.cost}
               </option>
             );
           })}
