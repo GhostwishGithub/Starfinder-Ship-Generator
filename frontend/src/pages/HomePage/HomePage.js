@@ -225,6 +225,8 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
+        <div class="input">
         <select>
         {frames &&
           frames.map((item) => {
@@ -239,19 +241,21 @@ const HomePage = () => {
 
             })}
         </select>
-        <select>
+        <br />
+        Core: <select>
         {powercores &&
           powercores.map((item) => {
             
             return (
-              <option>
-                Core: {item.core} Size: {item.size} PCU: {item.pcu} Cost {item.cost}
+              <option title="Size: {item.size} PCU: {item.pcu} Cost {item.cost}">
+                {item.core}
               </option>
 
             )
 
             })}
         </select>
+        <br />
         <select>
         {thrusters &&
           thrusters.map((item) => {
@@ -265,6 +269,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {armors &&
           armors.map((item) => {
@@ -278,6 +283,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {computers &&
           computers.map((item) => {
@@ -291,6 +297,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {crewquarters &&
           crewquarters.map((item) => {
@@ -304,6 +311,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {driftengines &&
           driftengines.map((item) => {
@@ -317,7 +325,8 @@ const HomePage = () => {
 
             })}
         </select>
-        <select>
+        <br />
+        <select multiple>
         {expansionbays &&
           expansionbays.map((item) => {
             
@@ -330,6 +339,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {security &&
           security.map((item) => {
@@ -343,6 +353,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {sensors &&
           sensors.map((item) => {
@@ -356,6 +367,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {shields &&
           shields.map((item) => {
@@ -369,6 +381,7 @@ const HomePage = () => {
 
             })}
         </select>
+        <br />
         <select>
         {weapons &&
           weapons.map((item) => {
@@ -382,6 +395,7 @@ const HomePage = () => {
 
             })}
         </select>
+    </div>
     </div>
   );
 };

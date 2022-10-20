@@ -40,6 +40,17 @@ button:hover {
   text-align: center;
 }
 
+.input {
+  margin: 0 auto;
+  max-width: 600px;
+  overflow: auto;
+  text-align: right;
+}
+
+.input select {
+  width: 50%;
+}
+
 .form {
   align-items: center;
   display: flex;
