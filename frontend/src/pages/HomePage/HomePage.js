@@ -23,6 +23,8 @@ const HomePage = () => {
   const [sensors, setSensor] = useState([]);
   const [shields, setShield] = useState([]);
   const [weapons, setWeapon] = useState([]);
+  const [tierBpuLimiter, setTierBpuLimiter] = useState(0);
+  const [frameCost] = useState(0);
 
   useEffect(() => {
     const fetchTiers = async () => {
@@ -32,7 +34,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        console.log(response.data)
+        console.log(response.data);
         setTier(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -56,11 +58,14 @@ const HomePage = () => {
 
     const fetchPowercores = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/powercores/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
+        let response = await axios.get(
+          "http://127.0.0.1:8000/api/powercores/",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
         setPowercore(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -112,11 +117,14 @@ const HomePage = () => {
 
     const fetchCrewquarters = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/crewquarters/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
+        let response = await axios.get(
+          "http://127.0.0.1:8000/api/crewquarters/",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
         setCrewquarter(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -126,11 +134,14 @@ const HomePage = () => {
 
     const fetchDriftengines = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/driftengines/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
+        let response = await axios.get(
+          "http://127.0.0.1:8000/api/driftengines/",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
         setDriftengine(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -140,11 +151,14 @@ const HomePage = () => {
 
     const fetchExpansionbays = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/expansionbays/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
+        let response = await axios.get(
+          "http://127.0.0.1:8000/api/expansionbays/",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
         setExpansionbay(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -207,181 +221,225 @@ const HomePage = () => {
       }
     };
     fetchWeapons();
-
   }, [token]);
+
+  function handleSelectedTier(event) {
+    // console.log(event.target.value);
+    let selectedOption = event.target.value
+    console.log(selectedOption)
+    setTierBpuLimiter(selectedOption)
+  }
+  function handleSelectedFrame(event) {
+    let selectedOption = event.target.value
+    console.log(selectedOption)
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+  }
+  function handleSelectedCore(event) {
+    let selectedOption = event.target.value
+    console.log(selectedOption)
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+  }
+  function handleSelectedThruster(event) {
+    let selectedOption = event.target.value
+    console.log(selectedOption)
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+  }
+  // function handleSelectedArmor(event) {
+  //   let selectedOption = event.target.value
+  //   console.log(selectedOption)
+  //   setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+  // }
+
+function handleSelectedComputer(event) {
+  let selectedOption = event.target.value
+  console.log(selectedOption)
+  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+}
+function handleSelectedCrewQuarter(event) {
+  let selectedOption = event.target.value
+  console.log(selectedOption)
+  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+}
+// function handleSelectedDriftEngine(event) {
+//   let selectedOption = event.target.value
+//   console.log(selectedOption)
+//   setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+// }
+function handleSelectedExpansionBay(event) {
+  let selectedOption = event.target.value
+  console.log(selectedOption)
+  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+}
+// function handleSelectedSecurity(event) {
+//   let selectedOption = event.target.value
+//   console.log(selectedOption)
+//   setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+// }
+function handleSelectedSensor(event) {
+  let selectedOption = event.target.value
+  console.log(selectedOption)
+  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+}
+function handleSelectedShield(event) {
+  let selectedOption = event.target.value
+  console.log(selectedOption)
+  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+}
+// function handleSelectedSecurity(event) {
+//   let selectedOption = event.target.value
+//   console.log(selectedOption)
+//   setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
+// }
   return (
     <div className="container">
       <h1>Starship Generator Protoype for {user.username}!</h1>
-      <select>
+      <h1>BPU: {tierBpuLimiter}</h1>
+      <select  onChange={handleSelectedTier}>
         {tiers &&
           tiers.map((item) => {
-            
             return (
-              <option>
-                Tier: {item.tier} BP Limit: {item.bpuLimiter} HP increases: {item.special}
+              <option value={item.bpuLimiter}>
+                Tier: {item.tier} BP Limit: {item.bpuLimiter} HP increases:{item.special}
               </option>
+            );
+          })}
+      </select>
 
-            )
-
-            })}
-        </select>
-        <select>
+      <select onChange={handleSelectedFrame}>
         {frames &&
           frames.map((item) => {
-            
             return (
-              <option>
-                Frame: {item.frame} Size: {item.size} Maneuverability: {item.maneuverability} HP: {item.hp} Increment: {item.increment} DT: {item.dt} CT: {item.ct} Mounts: {item.mounts} Expansion Bays: {item.expansionBays} Minimum Crew: {item.minimumCrew} Maximum Crew: {item.maximumCrew} Cost: {item.cost}
+              <option value={item.cost}>
+                Frame: {item.frame} Size: {item.size} Maneuverability:{" "}
+                {item.maneuverability} HP: {item.hp} Increment: {item.increment}{" "}
+                DT: {item.dt} CT: {item.ct} Mounts: {item.mounts} Expansion
+                Bays: {item.expansionBays} Minimum Crew: {item.minimumCrew}{" "}
+                Maximum Crew: {item.maximumCrew} Cost: {item.cost}
               </option>
-
-            )
-            
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedCore}>
         {powercores &&
           powercores.map((item) => {
-            
             return (
-              <option>
-                Core: {item.core} Size: {item.size} PCU: {item.pcu} Cost {item.cost}
+              <option value={item.cost}>
+                Core: {item.core} Size: {item.size} PCU: {item.pcu} Cost{" "}
+                {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedThruster}>
         {thrusters &&
           thrusters.map((item) => {
-            
             return (
-              <option>
-                Thruster: {item.thruster} Size: {item.size} Speed (in hexes): {item.speed} Piloting Modifier: {item.piloting} PCU: {item.pcu} Cost (in BP): {item.cost}
+              <option value={item.cost}>
+                Thruster: {item.thruster} Size: {item.size} Speed (in hexes):{" "}
+                {item.speed} Piloting Modifier: {item.piloting} PCU: {item.pcu}{" "}
+                Cost (in BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select>
         {armors &&
           armors.map((item) => {
-            
             return (
               <option>
-                Armor: {item.armor} AC: {item.ac} Special: {item.specialTL} TL, {item.specialTD} turn distance
+                Armor: {item.armor} AC: {item.ac} Special: {item.specialTL} TL,{" "}
+                {item.specialTD} turn distance
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedComputer}>
         {computers &&
           computers.map((item) => {
-            
             return (
-              <option>
-                Computer {item.computer} Bonus: {item.bonus} Nodes: {item.nodes} PCU: {item.pcu} Cost (in BP): {item.cost}
+              <option value={item.cost}>
+                Computer {item.computer} Bonus: {item.bonus} Nodes: {item.nodes}{" "}
+                PCU: {item.pcu} Cost (in BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedCrewQuarter}>
         {crewquarters &&
           crewquarters.map((item) => {
-            
             return (
-              <option>
+              <option value={item.cost}>
                 Crew Quarters: {item.crewQuarters} Cost (In BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select>
         {driftengines &&
           driftengines.map((item) => {
-            
             return (
               <option>
-                Drift Engine: {item.driftEngine} Engine Rating: {item.rating} Min. PCU {item.pcuRequirement} Max. Size {item.maxSize}
+                Drift Engine: {item.driftEngine} Engine Rating: {item.rating}{" "}
+                Min. PCU {item.pcuRequirement} Max. Size {item.maxSize}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedExpansionBay}>
         {expansionbays &&
           expansionbays.map((item) => {
-            
             return (
-              <option>
-                Expansion Bay: {item.expansionBay} PCU: {item.pcu} Cost (In BP): {item.cost}
+              <option value={item.cost}>
+                Expansion Bay: {item.expansionBay} PCU: {item.pcu} Cost (In BP):{" "}
+                {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select>
         {security &&
           security.map((item) => {
-            
             return (
               <option>
                 Security: {item.security} Cost (In BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedSensor}>
         {sensors &&
           sensors.map((item) => {
-            
             return (
-              <option>
-                Sensors: {item.sensors} Range: {item.range} Modifier: {item.modifier} Cost (in BP): {item.cost}
+              <option value={item.cost}>
+                Sensors: {item.sensors} Range: {item.range} Modifier:{" "}
+                {item.modifier} Cost (in BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select onChange={handleSelectedShield}>
         {shields &&
           shields.map((item) => {
-            
             return (
-              <option>
-                Shield Name: {item.shield} Total SP: {item.totalSP} Regen.: {item.regen} PCU: {item.pcu} Cost(in BP): {item.cost}
+              <option value={item.cost}>
+                Shield Name: {item.shield} Total SP: {item.totalSP} Regen.:{" "}
+                {item.regen} PCU: {item.pcu} Cost(in BP): {item.cost}
               </option>
-
-            )
-
-            })}
-        </select>
-        <select>
+            );
+          })}
+      </select>
+      <select>
         {weapons &&
           weapons.map((item) => {
-            
             return (
               <option>
-                Name: {item.weapon} Range: {item.range} Speed: {item.speed} Damage: {item.damage} PCU: {item.pcu} Cost (In BP): {item.cost} Special: {item.special}
+                Name: {item.weapon} Range: {item.range} Speed: {item.speed}{" "}
+                Damage: {item.damage} PCU: {item.pcu} Cost (In BP): {item.cost}{" "}
+                Special: {item.special}
               </option>
-
-            )
-
-            })}
-        </select>
+            );
+          })}
+      </select>
     </div>
   );
 };
