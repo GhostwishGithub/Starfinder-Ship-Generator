@@ -326,7 +326,7 @@ const HomePage = () => {
             })}
         </select>
         <br />
-        <select>
+        <select multiple>
         {expansionbays &&
           expansionbays.map((item) => {
             
