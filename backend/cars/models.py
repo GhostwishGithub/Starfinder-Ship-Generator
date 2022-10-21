@@ -75,8 +75,7 @@ class ExpansionBays(models.Model):
 
 class Security(models.Model):
     security = models.CharField(max_length=60)
-    cost = models.IntegerField()
-    #not done here, same as armor and drift engines
+    cost = models.CharField(max_length=36)
 
 class Sensors(models.Model):
     sensors = models.CharField(max_length=36)
@@ -101,6 +100,14 @@ class Weapons(models.Model):
     pcu = models.IntegerField()
     cost = models.IntegerField()
     special = models.CharField(max_length=36)
+
+class PersonnelWeaponsLongarm(models.Model):
+    weapon = models.CharField(max_length=48)
+    level = models.IntegerField()
+
+class PersonnelWeaponsHeavy(models.Model):
+    weapon = models.CharField(max_length=48)
+    level = models.IntegerField()
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 

@@ -2,8 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Car, Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons
-from .serializers import CarSerializer, TiersSerializer, FramesSerializer, PowerCoresSerializer, ThrustersSerializer, ArmorsSerializer, ComputersSerializer, CrewQuartersSerializer, DriftEnginesSerializer, ExpansionBaysSeralizer, SecuritySerializer, SensorsSerializer, ShieldsSerializer, WeaponsSerializer
+from .models import Car, Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons, PersonnelWeaponsHeavy, PersonnelWeaponsLongarm
+from .serializers import CarSerializer, DefensiveCountermeasuresSerializer, TiersSerializer, FramesSerializer, PowerCoresSerializer, ThrustersSerializer, ArmorsSerializer, ComputersSerializer, CrewQuartersSerializer, DefensiveCountermeasures, DriftEnginesSerializer, ExpansionBaysSeralizer, SecuritySerializer, SensorsSerializer, ShieldsSerializer, WeaponsSerializer, PersonnelWeaponsHeavySerializer, PersonnelWeaponsLongarmSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -56,6 +56,13 @@ def get_crewquarters(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
+def get_defensivecountermeasures(request):
+    defensivecountermeasures = DefensiveCountermeasures.objects.all()
+    serializer = DefensiveCountermeasuresSerializer(defensivecountermeasures, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def get_driftengines(request):
     driftengine = DriftEngines.objects.all()
     serializer = DriftEnginesSerializer(driftengine, many=True)
@@ -94,6 +101,20 @@ def get_shields(request):
 def get_weapons(request):
     weapons = Weapons.objects.all()
     serializer = WeaponsSerializer(weapons, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_personnelweaponsheavy(request):
+    personnelweaponsheavy = PersonnelWeaponsHeavy.objects.all()
+    serializer = PersonnelWeaponsHeavySerializer(personnelweaponsheavy, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_personnelweaponslongarm(request):
+    personnelweaponslongarm = PersonnelWeaponsLongarm.objects.all()
+    serializer = PersonnelWeaponsLongarmSerializer(personnelweaponslongarm, many=True)
     return Response(serializer.data)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<

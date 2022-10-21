@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car,Tiers, Frames,PowerCores,Thrusters,Armors,Computers,CrewQuarters,DefensiveCountermeasures,DriftEngines,ExpansionBays,Security,Sensors,Shields, Weapons
+from .models import Car, PersonnelWeaponsHeavy, PersonnelWeaponsLongarm,Tiers, Frames,PowerCores,Thrusters,Armors,Computers,CrewQuarters,DefensiveCountermeasures,DriftEngines,ExpansionBays,Security,Sensors,Shields, Weapons
 
 # Register your models here.
 admin.site.register(Car)
@@ -17,3 +17,5 @@ admin.site.register(Security)
 admin.site.register(Sensors)
 admin.site.register(Shields)
 admin.site.register(Weapons)
+admin.site.register(PersonnelWeaponsHeavy)
+admin.site.register(PersonnelWeaponsLongarm)

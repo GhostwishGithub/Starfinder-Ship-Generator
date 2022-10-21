@@ -1,7 +1,7 @@
 #from jmespath import search <- no idea why this is even here. Caused errors. Commented it out and things went back to normal
 from rest_framework import serializers
 from .models import Car
-from .models import Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons
+from .models import Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons, PersonnelWeaponsHeavy, PersonnelWeaponsLongarm
 
 class TiersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,6 +46,12 @@ class CrewQuartersSerializer(serializers.ModelSerializer):
         fields = ['crewQuarters','cost']
         depth = 1
 
+class DefensiveCountermeasuresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DefensiveCountermeasures
+        fields = ['defensiveCountermeasures', 'TLbonus', 'pcu', 'cost']
+        depth = 1
+
 class DriftEnginesSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriftEngines
@@ -81,10 +87,19 @@ class WeaponsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weapons
         fields = ['weapon','weaponClass','weaponType','speed','range','damage','pcu','cost','special']
+        depth = 1
 
+class PersonnelWeaponsLongarmSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonnelWeaponsLongarm
+        fields = ['weapon','level']
+        depth = 1
 
-
-
+class PersonnelWeaponsHeavySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonnelWeaponsHeavy
+        fields = ['weapon','level']
+        depth = 1
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
