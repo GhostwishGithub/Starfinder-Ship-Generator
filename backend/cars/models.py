@@ -66,7 +66,7 @@ class DriftEngines(models.Model):
     rating = models.IntegerField()
     pcuRequirement = models.IntegerField()
     maxSize = models.CharField(max_length=12)
-    #cost = ah lovely, same as armor. hrm
+    cost = models.IntegerField()
 
 class ExpansionBays(models.Model):
     expansionBay = models.CharField(max_length=50)

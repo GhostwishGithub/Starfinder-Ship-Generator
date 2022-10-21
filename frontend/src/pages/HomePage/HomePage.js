@@ -234,6 +234,7 @@ const HomePage = () => {
     let selectedOption = event.target.value
     //Create an array of items. 
     let itemsPassedInToArray = selectedOption.split(",")
+    //creates an array of the values passed in ex: ["size","bp"]
     //this splits the array at the comma, effectively making two stings
     let size = itemsPassedInToArray[0]
     setShipSize(size)
@@ -241,7 +242,7 @@ const HomePage = () => {
     let cost = parseInt(itemsPassedInToArray[1])
     //this takes the second variable, but makes it an Int
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost)
-  }
+  } 
 
   function handleSelectedCore(event) {
     let selectedOption = event.target.value
@@ -256,27 +257,28 @@ const HomePage = () => {
 
   function swapShipSize(event) {
     let sizeCategory = 0
-    if (shipSize = 'Tiny')
-      sizeCategory = 1
-    if (shipSize = 'Small')
-      sizeCategory = 2
-    if (shipSize = 'Medium')
-      sizeCategory = 3
-    if (shipSize = 'Large')
-      sizeCategory = 4
-    if (shipSize = 'Huge')
-      sizeCategory = 5
-    if (shipSize = 'Gargantuan')
-      sizeCategory = 6
-    else (shipSize = 'Colossal')
-      sizeCategory = 7
+    if (shipSize == 'Tiny')
+      {sizeCategory = 1}
+    if (shipSize == 'Small')
+      {sizeCategory = 2}
+    if (shipSize == 'Medium')
+      {sizeCategory = 3}
+    if (shipSize == 'Large')
+      {sizeCategory = 4}
+    if (shipSize == 'Huge')
+      {sizeCategory = 5}
+    if (shipSize == 'Gargantuan')
+      {sizeCategory = 6}
+    else if (shipSize == 'Colossal')
+      {sizeCategory = 7}
     return sizeCategory
   }
   function handleSelectedArmor(event) {
-    let selectedOption = event.target.value * swapShipSize
+    debugger
+    let selectedOption = event.target.value * swapShipSize()
     console.log(selectedOption)
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
-  }
+  }//DO NOT FORGET TO UPDATE YOUR SERIALIZERS!!!
 
 function handleSelectedComputer(event) {
   let selectedOption = event.target.value
@@ -332,7 +334,8 @@ function handleSelectedShield(event) {
             );
           })}
       </select>
-
+      <br />
+      <div class="input">
       <select onChange={handleSelectedFrame}>
         {frames &&
           frames.map((item) => {
@@ -347,17 +350,20 @@ function handleSelectedShield(event) {
             );
           })}
       </select>
-      <select onChange={handleSelectedCore}>
+      <br />
+      Core: <select onChange={handleSelectedCore}>
         {powercores &&
           powercores.map((item) => {
+            let tempTitle = "Size: " + item.size + " PCU: " + item.pcu + " Cost: " + item.cost;
+            //spread this around tomorrow!
             return (
-              <option value={item.cost}>
-                Core: {item.core} Size: {item.size} PCU: {item.pcu} Cost{" "}
-                {item.cost}
+              <option title={tempTitle} value={item.cost}>
+                {item.core} 
               </option>
             );
           })}
       </select>
+      <br />
       <select onChange={handleSelectedThruster}>
         {thrusters &&
           thrusters.map((item) => {
@@ -468,6 +474,7 @@ function handleSelectedShield(event) {
             );
           })}
       </select>
+    </div>
     </div>
   );
 };

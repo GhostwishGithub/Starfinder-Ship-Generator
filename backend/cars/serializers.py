@@ -30,8 +30,8 @@ class ThrustersSerializer(serializers.ModelSerializer):
 class ArmorsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Armors
-        fields = ['armor','ac','specialTL','specialTD']
-        #MISSING COST FIELD! NOT READY YET! DON'T FORGET THIS! (you're going to)
+        fields = ['armor','ac','specialTL','specialTD', 'cost']
+        #MISSING COST FIELD! NOT READY YET! DON'T FORGET THIS! (you're going to) (you did lol)
         depth = 1
 
 class ComputersSerializer(serializers.ModelSerializer):
@@ -49,8 +49,8 @@ class CrewQuartersSerializer(serializers.ModelSerializer):
 class DriftEnginesSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriftEngines
-        fields = ['driftEngine','rating','pcuRequirement','maxSize']
-        #MISSING COST FIELD! NOT READY YET! DON'T FORGET THIS! (you're going to)
+        fields = ['driftEngine','rating','pcuRequirement','maxSize', 'cost']
+        #MISSING COST FIELD! NOT READY YET! DON'T FORGET THIS! (you're going to) (learned my lesson lol)
         depth = 1
 
 class ExpansionBaysSeralizer(serializers.ModelSerializer):
