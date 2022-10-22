@@ -327,7 +327,6 @@ const HomePage = () => {
     return sizeCategory;
   }
   function handleSelectedArmor(event) {
-    debugger;
     let selectedOption = event.target.value * swapShipSize();
     console.log(selectedOption);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
@@ -368,19 +367,31 @@ const HomePage = () => {
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
   }
   function handleSelectedSecurity(event) {
+    debugger
+    let selectedOption = event.target.value;
+    console.log(selectedOption.security)
+    handleSelectedSecurityLongarm(selectedOption);
+    handleSelectedSecurityHeavy(selectedOption);
+  }
+  function handleSelectedSecurityLongarm(event) {
     let selectedOption = event.target.value;
     console.log(selectedOption.security)
     if (selectedOption.security === 'Antipersonnel weapon (longarm)') {
       console.log(selectedOption);
       setWeaponToggleLongarm(true);
     }
-    else if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
+    // else if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
+    //   console.log(selectedOption);
+    //   setWeaponToggleHeavy(true);
+    //}
+  }
+  function handleSelectedSecurityHeavy(event) {
+    let selectedOption = event.target.value;
+    console.log(selectedOption.security)
+    if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
       console.log(selectedOption);
       setWeaponToggleHeavy(true);
-    }
-    // console.log(selectedOption)
-    // setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption)
-  }
+  }}
   return (
     <div className="container">
       <h1>Starship Generator Protoype for {user.username}!</h1>
