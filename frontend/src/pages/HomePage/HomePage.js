@@ -367,31 +367,24 @@ const HomePage = () => {
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
   }
   function handleSelectedSecurity(event) {
-    debugger
     let selectedOption = event.target.value;
-    console.log(selectedOption.security)
+    console.log(selectedOption.security);
     handleSelectedSecurityLongarm(selectedOption);
+    console.log(selectedOption.security);
     handleSelectedSecurityHeavy(selectedOption);
   }
   function handleSelectedSecurityLongarm(event) {
-    let selectedOption = event.target.value;
-    console.log(selectedOption.security)
-    if (selectedOption.security === 'Antipersonnel weapon (longarm)') {
-      console.log(selectedOption);
+    console.log(event);
+    if (event === 'Antipersonnel weapon (longarm)') {
       setWeaponToggleLongarm(true);
     }
-    // else if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
-    //   console.log(selectedOption);
-    //   setWeaponToggleHeavy(true);
-    //}
   }
   function handleSelectedSecurityHeavy(event) {
-    let selectedOption = event.target.value;
-    console.log(selectedOption.security)
-    if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
-      console.log(selectedOption);
+    console.log(event)
+    if (event === 'Antipersonnel weapon (heavy)') {
       setWeaponToggleHeavy(true);
-  }}
+    }
+  }
   return (
     <div className="container">
       <h1>Starship Generator Protoype for {user.username}!</h1>
@@ -526,7 +519,7 @@ const HomePage = () => {
           {security &&
             security.map((item) => {
               return (
-                <option>
+                <option value={item.security}>
                   Security: {item.security} Cost (In BP): {item.cost}
                 </option>
               );
