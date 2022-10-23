@@ -385,6 +385,17 @@ const HomePage = () => {
       setWeaponToggleHeavy(true);
     }
   }
+  function handleHeavyCosts(event){
+    let selectedOption =  event.target.value;
+    console.log(selectedOption);
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - (5 + selectedOption));
+  }
+
+  function handleLongarmCosts(event){
+    let selectedOption = event.target.value;
+    console.log(selectedOption);
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  }
   return (
     <div className="container">
       <h1>Starship Generator Protoype for {user.username}!</h1>
@@ -527,11 +538,11 @@ const HomePage = () => {
         </select>
 
         {weaponToggleLongarm === true && (
-          <select>
+          <select onChange={handleLongarmCosts}>
             {personnelweaponslongarm &&
               personnelweaponslongarm.map((item) => {
                 return (
-                  <option>
+                  <option value={item.level}>
                     Weapon: {item.weapon} Item Level: {item.level}
                     
                   </option>
@@ -541,11 +552,11 @@ const HomePage = () => {
         )}
 
         {weaponToggleHeavy === true && (
-          <select>
+          <select onChange={handleHeavyCosts}>
             {personnelweaponsheavy &&
               personnelweaponsheavy.map((item) => {
                 return (
-                  <option>
+                  <option value={item.level}>
                     Weapon: {item.weapon} Item Level: {item.level}
                     
                   </option>
