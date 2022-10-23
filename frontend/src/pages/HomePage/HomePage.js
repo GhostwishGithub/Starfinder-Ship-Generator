@@ -326,6 +326,17 @@ const HomePage = () => {
     }
     return sizeCategory;
   }
+
+  function handleSelectedDriftEngine(event) {
+    let selectedOption = event.target.value * swapShipSize();
+    console.log(selectedOption);
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  }
+  function handleSelectedSensor(event) {
+    let selectedOption = event.target.value;
+    console.log(selectedOption);
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  }
   function handleSelectedArmor(event) {
     let selectedOption = event.target.value * swapShipSize();
     console.log(selectedOption);
@@ -346,17 +357,7 @@ const HomePage = () => {
     console.log(selectedOption);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
   }
-  function handleSelectedDriftEngine(event) {
-    let selectedOption = event.target.value * swapShipSize();
-    console.log(selectedOption);
-    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
-  }
   function handleSelectedExpansionBay(event) {
-    let selectedOption = event.target.value;
-    console.log(selectedOption);
-    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
-  }
-  function handleSelectedSensor(event) {
     let selectedOption = event.target.value;
     console.log(selectedOption);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
@@ -390,8 +391,12 @@ const HomePage = () => {
     console.log(selectedOption);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - (5 + selectedOption));
   }
-
   function handleLongarmCosts(event){
+    let selectedOption = event.target.value;
+    console.log(selectedOption);
+    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  }
+  function handleSelectedWeapon(event) {
     let selectedOption = event.target.value;
     console.log(selectedOption);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
@@ -412,18 +417,40 @@ const HomePage = () => {
           })}
       </select>
       <br />
+      <form>
+        <label>Manual Override:{" "} 
+          <input
+          type="text"
+          value={tierBpuLimiter}
+          onChange={(e) => setTierBpuLimiter(e.target.value)}
+          />
+        </label>
+      </form>
       <div class="input">
+        Frame:{" "}
         <select onChange={handleSelectedFrame}>
           {frames &&
             frames.map((item) => {
+              let frametitle =
+                "Size: " +
+                item.size +
+                " Maneuverability: " +
+                item.maneuverability +
+                " HP: " +
+                item.hp +
+                " DT: " +
+                item.dt +
+                " Mounts: " +
+                item.mounts +
+                " Expansion Bays: " +
+                item.expansionBays +
+                " Minimum Crew: " +
+                item.minimumCrew +
+                " Maximum Crew: " +
+                item.maximumCrew;
               return (
-                <option value={[item.size, item.cost]}>
-                  Frame: {item.frame} Size: {item.size} Maneuverability:{" "}
-                  {item.maneuverability} HP: {item.hp} Increment:{" "}
-                  {item.increment} DT: {item.dt} CT: {item.ct} Mounts:{" "}
-                  {item.mounts} Expansion Bays: {item.expansionBays} Minimum
-                  Crew: {item.minimumCrew} Maximum Crew: {item.maximumCrew}{" "}
-                  Cost: {item.cost}
+                <option title={frametitle} value={[item.size, item.cost]}>
+                  {item.frame} Increment:{" "}{item.increment} Cost: {item.cost}
                 </option>
               );
             })}
@@ -433,99 +460,156 @@ const HomePage = () => {
         <select onChange={handleSelectedCore}>
           {powercores &&
             powercores.map((item) => {
-              let tempTitle =
+              let coreTitle =
                 "Size: " +
                 item.size +
                 " PCU: " +
                 item.pcu +
                 " Cost: " +
                 item.cost;
-              //spread this around tomorrow!
               return (
-                <option title={tempTitle} value={item.cost}>
+                <option title={coreTitle} value={item.cost}>
                   {item.core}
                 </option>
               );
             })}
         </select>
         <br />
+        Thruster:{" "}
         <select onChange={handleSelectedThruster}>
           {thrusters &&
             thrusters.map((item) => {
+              let thrusterTitle =
+              "Speed: " +
+              item.speed +
+              " Piloting Bonus: " +
+              item.piloting;
               return (
-                <option value={item.cost}>
-                  Thruster: {item.thruster} Size: {item.size} Speed (in hexes):{" "}
-                  {item.speed} Piloting Modifier: {item.piloting} PCU:{" "}
-                  {item.pcu} Cost (in BP): {item.cost}
+                <option title = {thrusterTitle} value={item.cost}>
+                  {item.thruster} Size: {item.size} Cost (in BP): {item.cost}
                 </option>
               );
             })}
         </select>
+        <br />
+        Drift Engine:{" "}
+        <select onChange={handleSelectedDriftEngine}>
+          {driftengines &&
+            driftengines.map((item) => {
+              let driftTitle =
+              "Engine rating: " +
+              item.rating +
+              " Min. PCU: " +
+              item.pcuRequirement +
+              " Max. Size: " + 
+              item.maxSize;
+              return (
+                <option title = {driftTitle} value={item.cost}>
+                  {item.driftEngine} Cost: {item.cost} x size category
+                </option>
+              );
+            })}
+        </select>
+        <br />
+        Sensors:{" "}
+        <select onChange={handleSelectedSensor}>
+          {sensors &&
+            sensors.map((item) => {
+              let sensorTitle =
+              "Range: " +
+              item.range + 
+              " Modifier: " +
+              item.modifier;
+              return (
+                <option title={sensorTitle} value={item.cost}>
+                  {item.sensors} Cost (in BP): {item.cost}
+                </option>
+              );
+            })}
+        </select>
+        <br />
+        <br />
+        Armor:{" "}
         <select onChange={handleSelectedArmor}>
           {armors &&
             armors.map((item) => {
+              let armorTitle =
+              "AC: " +
+              item.armor +
+              " Special: " +
+              item.specialTL +" TL "+ item.specialTD + " turn distance"; 
               return (
-                <option value={item.cost}>
-                  Armor: {item.armor} AC: {item.ac} Special: {item.specialTL}{" "}
-                  TL, {item.specialTD} turn distance Cost (in BP): {item.cost}
+                <option title={armorTitle} value={item.cost}>
+                  {item.armor} Cost (in BP): {item.cost}
                 </option>
               );
             })}
         </select>
+        <br />
+        Computers:{" "}
         <select onChange={handleSelectedComputer}>
           {computers &&
             computers.map((item) => {
+              let computerTitle =
+              "Bonus: " +
+              item.bonus +
+              " Nodes: " +
+              item.nodes +
+              " PCU: " +
+              item.pcu;
               return (
-                <option value={item.cost}>
-                  Computer {item.computer} Bonus: {item.bonus} Nodes:{" "}
-                  {item.nodes} PCU: {item.pcu} Cost (in BP): {item.cost}
+                <option title={computerTitle} value={item.cost}>
+                  {item.computer} Cost (in BP): {item.cost}
                 </option>
               );
             })}
         </select>
+        <br />
+        Crew Quarters:{" "}
         <select onChange={handleSelectedCrewQuarter}>
           {crewquarters &&
             crewquarters.map((item) => {
               return (
                 <option value={item.cost}>
-                  Crew Quarters: {item.crewQuarters} Cost (In BP): {item.cost}
+                  {item.crewQuarters} Cost (In BP): {item.cost}
                 </option>
               );
             })}
         </select>
+        <br />
+        Defensive Countermeasures:{" "}
         <select onChange={handleSelectedDefenseiveCountermeasure}>
           {defensivecountermeasures &&
             defensivecountermeasures.map((item) => {
+              let defensiveTitle =
+              "Bonus to TL: " +
+              item.TLbonus +
+              " PCU: " +
+              item.pcu;
               return (
-                <option value={item.cost}>
-                  Name: {item.defensiveCountermeasures} Bonus to TL:{" "}
-                  {item.TLbonus} PCU: {item.pcu} Cost (in BP): {item.cost}
+                <option title={defensiveTitle} value={item.cost}>
+                  {item.defensiveCountermeasures} Cost (in BP): {item.cost}
                 </option>
               );
             })}
         </select>
-        <select onChange={handleSelectedDriftEngine}>
-          {driftengines &&
-            driftengines.map((item) => {
-              return (
-                <option value={item.cost}>
-                  Drift Engine: {item.driftEngine} Engine Rating: {item.rating}{" "}
-                  Min. PCU {item.pcuRequirement} Max. Size {item.maxSize}
-                </option>
-              );
-            })}
-        </select>
+        <br />
+        Expansion Bay:{" "}
         <select onChange={handleSelectedExpansionBay}>
           {expansionbays &&
             expansionbays.map((item) => {
+              let expansionTitle =
+              "PCU: " +
+              item.pcu;
               return (
-                <option value={item.cost}>
-                  Expansion Bay: {item.expansionBay} PCU: {item.pcu} Cost (In
-                  BP): {item.cost}
+                <option title={expansionTitle} value={item.cost}>
+                  {item.expansionBay} Cost (In BP): {item.cost}
                 </option>
               );
             })}
         </select>
+        <br />
+        Security:{" "}
         <select onChange={handleSelectedSecurity}>
           {security &&
             security.map((item) => {
@@ -536,7 +620,7 @@ const HomePage = () => {
               );
             })}
         </select>
-
+        <br />
         {weaponToggleLongarm === true && (
           <select onChange={handleLongarmCosts}>
             {personnelweaponslongarm &&
@@ -564,37 +648,44 @@ const HomePage = () => {
               })}
           </select>
         )}
-
-        <select onChange={handleSelectedSensor}>
-          {sensors &&
-            sensors.map((item) => {
-              return (
-                <option value={item.cost}>
-                  Sensors: {item.sensors} Range: {item.range} Modifier:{" "}
-                  {item.modifier} Cost (in BP): {item.cost}
-                </option>
-              );
-            })}
-        </select>
+        <br />
+        Shields:{" "}
         <select onChange={handleSelectedShield}>
           {shields &&
             shields.map((item) => {
+              let shieldTitle =
+              "Total SP: " +
+              item.totalSP +
+              " Regen.: " +
+              item.regen + 
+              " PCU: " +
+              item.pcu;
               return (
-                <option value={item.cost}>
-                  Shield Name: {item.shield} Total SP: {item.totalSP} Regen.:{" "}
-                  {item.regen} PCU: {item.pcu} Cost(in BP): {item.cost}
+                <option title={shieldTitle} value={item.cost}>
+                  Shield Name: {item.shield} Cost(in BP): {item.cost}
                 </option>
               );
             })}
         </select>
-        <select>
+        <br />
+        Weapons:{" "}
+        <select onChange={handleSelectedWeapon}>
           {weapons &&
             weapons.map((item) => {
+              let weaponTitle =
+              "Range: " +
+              item.range +
+              " Speed: " +
+              item.speed +
+              " Damage: " +
+              item.damage +
+              " PCU: " +
+              item.pcu +
+              " Special: " +
+              item.special;
               return (
-                <option>
-                  Name: {item.weapon} Range: {item.range} Speed: {item.speed}{" "}
-                  Damage: {item.damage} PCU: {item.pcu} Cost (In BP):{" "}
-                  {item.cost} Special: {item.special}
+                <option title={weaponTitle} value={item.cost}>
+                  Name: {item.weapon} Cost (In BP):{" "}{item.cost}
                 </option>
               );
             })}
