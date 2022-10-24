@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/tiers/', views.get_tiers),
     path('api/frames/', views.get_frames),
     path('api/powercores/', views.get_powercores),
+    # path('api/powercores/v2', views.make_powercores),
     path('api/thrusters/', views.get_thrusters),
     path('api/armors/', views.get_armors),
     path('api/computers/', views.get_computers),
