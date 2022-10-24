@@ -59,7 +59,7 @@ class DriftEnginesSerializer(serializers.ModelSerializer):
         #MISSING COST FIELD! NOT READY YET! DON'T FORGET THIS! (you're going to) (learned my lesson lol)
         depth = 1
 
-class ExpansionBaysSeralizer(serializers.ModelSerializer):
+class ExpansionBaysSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExpansionBays
         fields = ['expansionBay','pcu','cost']
