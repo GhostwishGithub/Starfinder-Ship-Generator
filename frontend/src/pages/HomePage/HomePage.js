@@ -782,7 +782,7 @@ const HomePage = () => {
       <select onChange={SelectionMenu}>
         {menuItems &&
           menuItems.map((item) => {
-            <option name={item.value}>{item.name}</option>
+            <option name={item}>{item}</option>
           })}
       </select>
       <div id="IDK">

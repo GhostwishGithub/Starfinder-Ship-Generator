@@ -257,8 +257,8 @@ def get_customselect(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        personnelweaponslongarm = CustomSelectSerializer.objects.all()
-        serializer = CustomSelectSerializer(personnelweaponslongarm, many=True)
+        menuItems = CustomSelectSerializer.objects.all()
+        serializer = CustomSelectSerializer(menuItems, many=True)
         return Response(serializer.data)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
