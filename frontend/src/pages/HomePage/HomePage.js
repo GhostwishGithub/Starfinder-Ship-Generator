@@ -30,6 +30,7 @@ const HomePage = () => {
   const [weaponToggleLongarm, setWeaponToggleLongarm] = useState(false);
   const [weaponToggleHeavy, setWeaponToggleHeavy] = useState(false);
   const [pcuCounter, setpcuCounter] = useState(0);
+  const [menuItems, setmenuItems] = useState([])
   // const [Placeholder, setPlaceholder] = useState('placeholder');
 
   useEffect(() => {
@@ -413,13 +414,14 @@ const HomePage = () => {
     setpcuCounter((pcuCounter) => pcuCounter - pcu);
     setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
   }
-  // function TemporaryName(event) {
-  //   //console.log(...this.refs.select.selectedOptions)
-  //   let newSelectItems = [event.selectedOptions];
-  //   console.log(newSelectItems);
-  //   setPlaceholder((Placeholder) => newSelectItems);
-
-  // }
+  function SelectionMenu(event) {
+    console.log("Get hecked")
+    // if(event === "core"){
+    //   document.getElementById("core").style = "";
+    //   //clears css overrides on this element
+    // else if(event)
+    // }
+  }
   return (
     <div className="container">
       <h1>Starship Generator Protoype for {user.username}!</h1>
@@ -717,7 +719,7 @@ const HomePage = () => {
           <input type="text" id="name" name="name">Name</input>
           <label for="size">Size:</label><br />
           <input type="text" id="size" name="size">Size limitation</input>
-          <label for="pcu"></label>PCU:<br />
+          <label for="pcu">PCU:</label><br />
           <input type="text" id="pcu" name="pcu">PCU generated</input>
           <label for="cost">Cost:</label><br />
           <input type="text" id="cost" name="cost">BP Cost</input>
@@ -725,7 +727,7 @@ const HomePage = () => {
         <form id="thruster">
           <label for="name">Thruster name:</label><br />
           <input type="text" id="name" name="name">Name</input>
-          <label for="size"></label>Size:<br />
+          <label for="size">Size:</label><br />
           <input type="text" id="size" name="size">Size limitation</input>
           <label for="speed">Speed:</label><br />
           <input type="text" id="speed" name="speed">Hex grid movement</input>
@@ -763,8 +765,8 @@ const HomePage = () => {
         <form id="crewQuarter">
           <label for="name">Name:</label><br />
           <input type="text" id="name" name="name">Name</input>
-          <label for=""></label><br />
-          <input type="text" id="" name=""></input>
+          <label for="cost">Cost:</label><br />
+          <input type="text" id="cost" name="cost">BP cost</input>
         </form>
         <form id="defensiveCountermeasure">
           <label for="name">Name:</label><br />
