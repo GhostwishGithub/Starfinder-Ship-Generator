@@ -31,7 +31,6 @@ const HomePage = () => {
   const [weaponToggleHeavy, setWeaponToggleHeavy] = useState(false);
   const [pcuCounter, setpcuCounter] = useState(0);
   const [menuItems, setmenuItems] = useState([])
-  // const [Placeholder, setPlaceholder] = useState('placeholder');
 
   useEffect(() => {
     const fetchTiers = async () => {
@@ -273,6 +272,20 @@ const HomePage = () => {
       }
     };
     fetchPersonnelWeaponsHeavy();
+
+    const fetchmenuItems = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/customselect/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        setmenuItems(response.data)
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchmenuItems();
   }, [token]);
 
   function handleSelectedTier(event) {
