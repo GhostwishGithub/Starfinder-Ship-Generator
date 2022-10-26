@@ -774,14 +774,6 @@ const HomePage = () => {
             })}
         </select>
       </div>
-    {/* <div className="container">
-      <button onClick={TemporaryName} value={this}>
-        Recalculate
-      </button>
-      <blockquote id="output">
-        {Placeholder}
-      </blockquote>
-    </div> */}
     {/* initially, this was going to be on a seperate page, for ease of use and such
     but after finding out that react requires a WHOLE OTHER LIBRARY to link different
     webpages together where as HTML needs only a <ahref> I said nuts to it.*/}
@@ -790,7 +782,7 @@ const HomePage = () => {
       <select onChange={SelectionMenu}>
         {menuItems &&
           menuItems.map((item) => {
-            
+            <option name={item.value}>{item.name}</option>
           })}
       </select>
       <div id="IDK">
