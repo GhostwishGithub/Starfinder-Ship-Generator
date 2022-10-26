@@ -716,135 +716,135 @@ const HomePage = () => {
       <div id="IDK">
         <form id="powercore">
           <label for="name">Core name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="size">Size:</label><br />
-          <input type="text" id="size" name="size">Size limitation</input>
+          <input type="text" id="size" name="size"/>Size limitation
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU generated</input>
+          <input type="text" id="pcu" name="pcu"/>PCU generated
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost"/>BP Cost
         </form>
         <form id="thruster">
           <label for="name">Thruster name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="size">Size:</label><br />
-          <input type="text" id="size" name="size">Size limitation</input>
+          <input type="text" id="size" name="size" />Size limitation
           <label for="speed">Speed:</label><br />
-          <input type="text" id="speed" name="speed">Hex grid movement</input>
+          <input type="text" id="speed" name="speed" />Hex grid movement
           <label for="piloting">Piloting:</label><br />
-          <input type="text" id="piloting" name="piloting">Piloting bonus</input>
+          <input type="text" id="piloting" name="piloting" />Piloting bonus
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU requirement</input>
+          <input type="text" id="pcu" name="pcu" />PCU requirement
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost:</input>
+          <input type="text" id="cost" name="cost" />BP Cost:
         </form>
         <form id="armor">
           <label for="name">Armor name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="ac">AC:</label><br />
-          <input type="text" id="ac" name="ac">Armor class bonus</input>
+          <input type="text" id="ac" name="ac"/>Armor class bonus
           <label for="specialTL">TL:</label><br />
-          <input type="text" id="specialTL" name="specialTL">Tracking Lock Debuff </input>
+          <input type="text" id="specialTL" name="specialTL" />Tracking Lock Debuff
           <label for="specialTD">TD:</label><br />
-          <input type="text" id="specialTD" name="specialTD">Turn Distance Debuff</input>
+          <input type="text" id="specialTD" name="specialTD"/>Turn Distance Debuff
           <label for="cost">Cost (x Size Catergory):</label><br />
-          <input type="text" id="cost" name="cost">BP cost</input>
+          <input type="text" id="cost" name="cost" />BP cost
         </form>
         <form id="computer">
           <label for="name">Computer name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="bonus">Bonus:</label><br />
-          <input type="text" id="bonus" name="bonus">Bonus</input>
+          <input type="text" id="bonus" name="bonus" />Bonus
           <label for="nodes">Nodes:</label><br />
-          <input type="text" id="nodes" name="nodes">Nodes</input>
+          <input type="text" id="nodes" name="nodes" />Nodes
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU</input>
+          <input type="text" id="pcu" name="pcu" />PCU
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP cost</input>
+          <input type="text" id="cost" name="cost" />BP cost
         </form>
         <form id="crewQuarter">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP cost</input>
+          <input type="text" id="cost" name="cost" />BP cost
         </form>
         <form id="defensiveCountermeasure">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="tlBonus">TL Bonus:</label><br />
-          <input type="text" id="tlBonus" name="tlBonus">Bonus to TL</input>
+          <input type="text" id="tlBonus" name="tlBonus" />Bonus to TL
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU cost</input>
+          <input type="text" id="pcu" name="pcu" />PCU cost
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="driftEngine">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="rating">Rating:</label><br />
-          <input type="text" id="rating" name="rating">Rating</input>
+          <input type="text" id="rating" name="rating" />Rating
           <label for="pcurequirement">PCU Requirement:</label><br />
-          <input type="text" id="pcurequirement" name="pcurequirement">PCU Requirement</input>
+          <input type="text" id="pcurequirement" name="pcurequirement" />PCU Requirement
           <label for="maxsize">Max Size:</label><br />
-          <input type="text" id="maxsize" name="maxsize">Maximum size allowed</input>
+          <input type="text" id="maxsize" name="maxsize" />Maximum size allowed
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="expansionBay">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU cost</input>
+          <input type="text" id="pcu" name="pcu" />PCU cost
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="security">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="sensor">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="range">Range:</label><br />
-          <input type="text" id="range" name="range">Range</input>
+          <input type="text" id="range" name="range" />Range
           <label for="modifier">Modifier:</label><br />
-          <input type="text" id="modifier" name="modifier"></input>
+          <input type="text" id="modifier" name="modifier" />Modifier
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="shield">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="totalsp">Total SP:</label><br />
-          <input type="text" id="totalsp" name="totalsp"></input>
+          <input type="text" id="totalsp" name="totalsp" />SP
           <label for="regen">Regen:</label><br />
-          <input type="text" id="regen" name="regen"></input>
+          <input type="text" id="regen" name="regen" />Regeneration
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU cost</input>
+          <input type="text" id="pcu" name="pcu" />PCU cost
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
         </form>
         <form id="weapon">
           <label for="name">Name:</label><br />
-          <input type="text" id="name" name="name">Name</input>
+          <input type="text" id="name" name="name" />Name
           <label for="weaponclass">Weapon Class:</label><br />
-          <input type="text" id="weaponclass" name="weaponclass">Class of weapon</input>
+          <input type="text" id="weaponclass" name="weaponclass" />Class of weapon
           <label for="weapontype">Weapon Type:</label><br />
-          <input type="text" id="weapontype" name="weapontype">Type of weapon</input>
+          <input type="text" id="weapontype" name="weapontype" />Type of weapon
           <label for="speed">Speed:</label><br />
-          <input type="text" id="" name=""></input>
+          <input type="text" id="speed" name="speed" />Speed
           <label for="range">Range:</label><br />
-          <input type="text" id="range" name="range">Range</input>
+          <input type="text" id="range" name="range" />Range
           <label for="damage">Damage:</label><br />
-          <input type="text" id="damage" name="damage">Damage of weapon</input>
+          <input type="text" id="damage" name="damage" />Damage of weapon
           <label for="pcu">PCU:</label><br />
-          <input type="text" id="pcu" name="pcu">PCU cost</input>
+          <input type="text" id="pcu" name="pcu" />PCU cost
           <label for="cost">Cost:</label><br />
-          <input type="text" id="cost" name="cost">BP Cost</input>
+          <input type="text" id="cost" name="cost" />BP Cost
           <label for="special">Special:</label><br />
-          <input type="text" id="special" name="special"></input>
+          <input type="text" id="special" name="special" />Special Attributes
         </form>
       </div>
     </div>
