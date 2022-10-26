@@ -109,6 +109,20 @@ class PersonnelWeaponsHeavy(models.Model):
     weapon = models.CharField(max_length=48)
     level = models.IntegerField()
 
+class CustomSelect(models.Model):
+    powercore = models.CharField(max_length=12)
+    thruster = models.CharField(max_length=12)
+    armor = models.CharField(max_length=12)
+    computer = models.CharField(max_length=12)
+    crewQuarter = models.CharField(max_length=12)
+    defensiveCountermasure = models.CharField(max_length=12)
+    driftEngine = models.CharField(max_length=12)
+    expansionBay = models.CharField(max_length=12)
+    security = models.CharField(max_length=12)
+    sensor = models.CharField(max_length=12)
+    shield = models.CharField(max_length=12)
+    weapon = models.CharField(max_length=12)
+
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 

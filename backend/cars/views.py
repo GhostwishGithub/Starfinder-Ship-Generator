@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Car, Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons, PersonnelWeaponsHeavy, PersonnelWeaponsLongarm
-from .serializers import CarSerializer, DefensiveCountermeasuresSerializer, TiersSerializer, FramesSerializer, PowerCoresSerializer, ThrustersSerializer, ArmorsSerializer, ComputersSerializer, CrewQuartersSerializer, DefensiveCountermeasures, DriftEnginesSerializer, ExpansionBaysSerializer, SecuritySerializer, SensorsSerializer, ShieldsSerializer, WeaponsSerializer, PersonnelWeaponsHeavySerializer, PersonnelWeaponsLongarmSerializer
+from .serializers import CarSerializer, CustomSelectSerializer, DefensiveCountermeasuresSerializer, TiersSerializer, FramesSerializer, PowerCoresSerializer, ThrustersSerializer, ArmorsSerializer, ComputersSerializer, CrewQuartersSerializer, DefensiveCountermeasures, DriftEnginesSerializer, ExpansionBaysSerializer, SecuritySerializer, SensorsSerializer, ShieldsSerializer, WeaponsSerializer, PersonnelWeaponsHeavySerializer, PersonnelWeaponsLongarmSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -245,16 +245,21 @@ def get_personnelweaponslongarm(request):
         well. While it is possible to make a longarm or heavy weapon dedicated to
         inner-ship defense, it is not advised due to the implications. This was
         instated merely to ensure a passing grade in my project.'''
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def make_powercores(request):
-#     print(
-#         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
-#     serializer = PowerCoresSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save(user=request.user)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def get_customselect(request):
+    print('User ', f"{request.user.id} {request.user.email} {request.user.username}")
+    if request.method == 'POST':
+        serializer = CustomSelectSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        personnelweaponslongarm = CustomSelectSerializer.objects.all()
+        serializer = CustomSelectSerializer(personnelweaponslongarm, many=True)
+        return Response(serializer.data)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 

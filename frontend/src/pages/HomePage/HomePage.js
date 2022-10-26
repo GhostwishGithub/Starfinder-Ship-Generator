@@ -416,11 +416,78 @@ const HomePage = () => {
   }
   function SelectionMenu(event) {
     console.log("Get hecked")
-    // if(event === "core"){
-    //   document.getElementById("core").style = "";
-    //   //clears css overrides on this element
-    // else if(event)
-    // }
+    if(event === "core"){
+      document.getElementById("core").hidden = "false";
+    }
+    else{
+      document.getElementById("core").hidden = "true";
+    }
+    if(event === "thruster"){
+      document.getElementById("thruster").hidden = "false";
+    }
+    else{
+      document.getElementById("thruster").hidden = "true";
+    }
+    if(event === "armor"){
+      document.getElementById("armor").hidden = "false";
+    }
+    else{
+      document.getElementById("armor").hidden = "true";
+    }
+    if(event === "computer"){
+      document.getElementById("computer").hidden = "false";
+    }
+    else{
+      document.getElementById("computer").hidden = "true";
+    }
+    if(event === "crewQuarter"){
+      document.getElementById("crewQuarter").hidden = "false";
+    }
+    else{
+      document.getElementById("crewQuarter").hidden = "true";
+    }
+    if(event === "defensiveCountermeasure"){
+      document.getElementById("defensiveCountermeasure").hidden = "false";
+    }
+    else{
+      document.getElementById("defensiveCountermeasure").hidden = "true";
+    }
+    if(event === "driftEngine"){
+      document.getElementById("driftEngine").hidden = "false";
+    }
+    else{
+      document.getElementById("driftEngine").hidden = "true";
+    }
+    if(event === "expansionBay"){
+      document.getElementById("expansionBay").hidden = "false";
+    }
+    else{
+      document.getElementById("expansionBay").hidden = "true";
+    }
+    if(event === "security"){
+      document.getElementById("security").hidden = "false";
+    }
+    else{
+      document.getElementById("security").hidden = "true";
+    }
+    if(event === "sensor"){
+      document.getElementById("sensor").hidden = "false";
+    }
+    else{
+      document.getElementById("sensor").hidden = "true";
+    }
+    if(event === "shield"){
+      document.getElementById("shield").hidden = "false";
+    }
+    else{
+      document.getElementById("shield").hidden = "true";
+    }
+    if(event === "weapon"){
+      document.getElementById("weapon").hidden = "false";
+    }
+    else{
+      document.getElementById("weapon").hidden = "true";
+    }
   }
   return (
     <div className="container">

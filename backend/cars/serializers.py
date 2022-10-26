@@ -1,6 +1,6 @@
 #from jmespath import search <- no idea why this is even here. Caused errors. Commented it out and things went back to normal
 from rest_framework import serializers
-from .models import Car
+from .models import Car, CustomSelect
 from .models import Tiers, Frames, PowerCores, Thrusters, Armors, Computers, CrewQuarters, DefensiveCountermeasures, DriftEngines, ExpansionBays, Security, Sensors, Shields, Weapons, PersonnelWeaponsHeavy, PersonnelWeaponsLongarm
 
 class TiersSerializer(serializers.ModelSerializer):
@@ -99,6 +99,12 @@ class PersonnelWeaponsHeavySerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonnelWeaponsHeavy
         fields = ['weapon','level']
+        depth = 1
+
+class CustomSelectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomSelect
+        fields = ['powercore','thruster','armor','computer','crewQuarter','defensiveCountermeasure','driftEngine','expansionBay','security','sensor','shield','weapon']
         depth = 1
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<

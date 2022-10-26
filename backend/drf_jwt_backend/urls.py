@@ -39,4 +39,5 @@ urlpatterns = [
     path('api/weapons/', views.get_weapons),
     path('api/personnelweaponslongarm/', views.get_personnelweaponslongarm),
     path('api/personnelweaponsheavy/', views.get_personnelweaponsheavy),
+    path('api/customselect/', views.get_customselect),
 ]
