@@ -40,4 +40,5 @@ urlpatterns = [
     path('api/personnelweaponslongarm/', views.get_personnelweaponslongarm),
     path('api/personnelweaponsheavy/', views.get_personnelweaponsheavy),
     path('api/customselect/', views.get_customselect),
+    path('api/customselectlist/', views.get_customselectlist),
 ]

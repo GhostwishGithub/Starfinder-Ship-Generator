@@ -110,24 +110,25 @@ class PersonnelWeaponsHeavy(models.Model):
     level = models.IntegerField()
 
 class CustomSelect(models.Model):
-    powercore = models.CharField(max_length=12)
-    thruster = models.CharField(max_length=12)
-    armor = models.CharField(max_length=12)
-    computer = models.CharField(max_length=12)
-    crewQuarter = models.CharField(max_length=12)
-    defensiveCountermasure = models.CharField(max_length=12)
-    driftEngine = models.CharField(max_length=12)
-    expansionBay = models.CharField(max_length=12)
-    security = models.CharField(max_length=12)
-    sensor = models.CharField(max_length=12)
-    shield = models.CharField(max_length=12)
-    weapon = models.CharField(max_length=12)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    powercore = models.ForeignKey(PowerCores, on_delete=models.CASCADE, null =True)
+    thruster = models.ForeignKey(Thrusters, on_delete=models.CASCADE, null =True)
+    armor =models.ForeignKey(Armors, on_delete=models.CASCADE, null =True)
+    computer =models.ForeignKey(Computers, on_delete=models.CASCADE, null =True)
+    crewQuarter = models.ForeignKey(CrewQuarters, on_delete=models.CASCADE, null =True)
+    defensiveCountermasure = models.ForeignKey(DefensiveCountermeasures, on_delete=models.CASCADE, null =True)
+    driftEngine = models.ForeignKey(DriftEngines, on_delete=models.CASCADE, null =True)
+    expansionBay = models.ForeignKey(ExpansionBays, on_delete=models.CASCADE, null =True)
+    security = models.ForeignKey(Security, on_delete=models.CASCADE, null =True)
+    sensor = models.ForeignKey(Sensors, on_delete=models.CASCADE, null =True)
+    shield = models.ForeignKey(Shields, on_delete=models.CASCADE, null =True)
+    weapon = models.ForeignKey(Weapons, on_delete=models.CASCADE, null =True)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 
 class Car(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, )
     make = models.CharField(max_length=30)
     model = models.CharField(max_length=100)
     year = models.IntegerField()

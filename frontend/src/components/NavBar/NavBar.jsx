@@ -12,7 +12,10 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>Starship Generator</b>
+          </Link>{" "}
+          <Link to="/custompage" style={{ textDoration: "none", color: "white" }}>
+            Custom Parts
           </Link>
         </li>
         <li>

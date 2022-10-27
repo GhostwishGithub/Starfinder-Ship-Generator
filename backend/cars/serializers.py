@@ -104,8 +104,35 @@ class PersonnelWeaponsHeavySerializer(serializers.ModelSerializer):
 class CustomSelectSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomSelect
-        fields = ['powercore','thruster','armor','computer','crewQuarter','defensiveCountermeasure','driftEngine','expansionBay','security','sensor','shield','weapon']
+        fields = [
+        'powercore', 'powercore_id',
+        'thruster', 'thruster_id',
+        'armor', 'armor_id',
+        'computer', 'computer_id',
+        'crewQuarter', 'crewQuarter_id',
+        'defensiveCountermasure', 'defensiveCountermasure_id',
+        'driftEngine', 'driftEngine_id', 
+        'expansionBay', 'expansionBay_id',
+        'security', 'security_id',
+        'sensor', 'sensor_id',
+        'shield', 'shield_id',
+        'weapon', 'weapon_id',
+        'user', 'user_id',
+        ]
         depth = 1
+
+    powercore_id = serializers.IntegerField(write_only=True)
+    thruster_id = serializers.IntegerField(write_only=True)
+    armor_id = serializers.IntegerField(write_only=True)
+    computer_id = serializers.IntegerField(write_only=True)
+    crewQuarter_id = serializers.IntegerField(write_only=True)
+    defensiveCountermasure_id = serializers.IntegerField(write_only=True)
+    driftEngine_id = serializers.IntegerField(write_only=True)
+    expansionBay_id = serializers.IntegerField(write_only=True)
+    security_id = serializers.IntegerField(write_only=True)
+    sensor_id = serializers.IntegerField(write_only=True)
+    shield_id = serializers.IntegerField(write_only=True)
+    weapon_id = serializers.IntegerField(write_only=True)
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
