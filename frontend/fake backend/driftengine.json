@@ -1,0 +1,5 @@
+[{"id":1, "driftEngine":"Signal Basic", "rating":1, "pcuRequirement":75, "maxSize":"N/A", "cost":2},
+ {"id":2, "driftEngine":"Signal Booster", "rating":2, "pcuRequirement":100, "maxSize":"Huge", "cost":5},
+ {"id":3, "driftEngine":"Signal Major", "rating":3, "pcuRequirement":150, "maxSize":"Large", "cost":10},
+ {"id":4, "driftEngine":"Signal Superior", "rating":4, "pcuRequirement":175, "maxSize":"Large", "cost":15},
+ {"id":5, "driftEngine":"Signal Ultra", "rating":5, "pcuRequirement":200, "maxSize":"Medium", "cost":20}]
