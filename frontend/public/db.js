@@ -1,3 +1,27 @@
+let user = {username:"Bane"}
+if (localStorage.getItem("starfindershipgenerator") !=null){
+    user=JSON.parse(localStorage.getItem("starfindershipgenerator"));
+}
+if (user.parts==undefined){
+    user.parts={
+        powercore:{},
+        thruster:{},
+        armor:{},
+        computer:{},
+        crewQuarter:{},
+        defensiveCountermeasure:{},
+        driftEngine:{},
+        expansionBay:{},
+        security:{},
+        sensor:{},
+        shield:{},
+        weapon:{}
+    }
+}
+function SaveToStorage() {
+    localStorage.setItem('starfindershipgenerator', JSON.stringify(user))
+}
+
 Armors=JSON.parse(`
 [{"id":1, "armor":"Mk 1 Armor", "ac":1, "specialTL":0, "specialTD":0, "cost":1},
  {"id":2, "armor":"Mk 2 Armor", "ac":2, "specialTL":0, "specialTD":0, "cost":2},
@@ -412,3 +436,67 @@ Weapons=JSON.parse(`
  {"id":46, "weapon":"Quantum missile launcher", "weaponClass":"Capital", "weaponType":"Tracking", "speed":12, "range":"Long", "damage":"2d8 x 10", "pcu":15, "cost":35, "special":"Limited Fire 5, quantum"},
  {"id":47, "weapon":"Solar torpedo launcher", "weaponClass":"Capital", "weaponType":"Tracking", "speed":10, "range":"Long", "damage":"2d6 x 10", "pcu":10, "cost":25, "special":"Limited Fire 5"}]
 `);
+
+Menus=JSON.parse(`
+[{"id":1, "title":"powercore"},
+ {"id":2, "title":"thruster"},
+ {"id":3, "title":"armor"},
+ {"id":4, "title":"computer"},
+ {"id":5, "title":"crewQuarter"},
+ {"id":5, "title":"defensiveCountermeasure"},
+ {"id":5, "title":"driftEngine"},
+ {"id":5, "title":"expansionBay"},
+ {"id":5, "title":"security"},
+ {"id":5, "title":"sensor"},
+ {"id":5, "title":"shield"},
+ {"id":6, "title":"weapon"}]
+`);
+
+for (item in user.parts.powercore){
+    if (item!=undefined)
+    PowerCores.push(user.parts.powercore[item]);
+}
+for (item in user.parts.thruster){
+    if (item!=undefined)
+    Thrusters.push(user.parts.thruster[item]);
+}
+for (item in user.parts.armor){
+    if (item!=undefined)
+    Armors.push(user.parts.armor[item]);
+}
+for (item in user.parts.computer){
+    if (item!=undefined)
+    Computers.push(user.parts.computer[item]);
+}
+for (item in user.parts.crewQuarter){
+    if (item!=undefined)
+    CrewQuarters.push(user.parts.crewQuarter[item]);
+}
+for (item in user.parts.defensiveCountermeasure){
+    if (item!=undefined)
+    DefensiveCountermeasures.push(user.parts.defensiveCountermeasure[item]);
+}
+for (item in user.parts.driftEngine){
+    if (item!=undefined)
+    DriftEngine.push(user.parts.driftEngine[item]);
+}
+for (item in user.parts.expansionBay){
+    if (item!=undefined)
+    ExpansionBays.push(user.parts.expansionBay[item]);
+}
+for (item in user.parts.security){
+    if (item!=undefined)
+    Securitys.push(user.parts.security[item]);
+}
+for (item in user.parts.sensor){
+    if (item!=undefined)
+    Sensors.push(user.parts.sensor[item]);
+}
+for (item in user.parts.shield){
+    if (item!=undefined)
+    Shields.push(user.parts.shield[item]);
+}
+for (item in user.parts.weapon){
+    if (item!=undefined)
+    Weapons.push(user.parts.weapon[item]);
+}
