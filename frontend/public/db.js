@@ -18,6 +18,9 @@ if (user.parts==undefined){
         weapon:{}
     }
 }
+if (user.ships==undefined){
+    user.ships={}
+}
 function SaveToStorage() {
     localStorage.setItem('starfindershipgenerator', JSON.stringify(user))
 }
