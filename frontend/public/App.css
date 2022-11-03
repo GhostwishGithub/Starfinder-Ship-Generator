@@ -33,11 +33,46 @@ button:hover {
   background-color: steelblue;
 }
 
+body {
+  background-color: #44424d;
+}
+
+#root {
+  margin: 0 auto;
+  overflow: auto;
+  text-align: center;
+  background-color: #44424d;
+  color: #b1cfea;
+}
+
 .container {
   margin: 0 auto;
   max-width: 600px;
   overflow: auto;
   text-align: center;
+}
+
+select {
+  border-radius: 0px;
+}
+
+.custominput {
+  margin: 0 auto;
+  max-width: 600px;
+  overflow: auto;
+  text-align: right;
+  padding: 2px;
+  /*padding-right: 156px;*/
+}
+
+.custominput select {
+  width: 50%;
+  max-width: 50%;
+}
+
+.custominput input {
+  width: 50%;
+  max-width: 50%;
 }
 
 .input {
@@ -72,4 +107,19 @@ button:hover {
   display: none;
   text-align: right;
   max-width: 400px;
+}
+
+.WARNING {
+  color: red;
+}
+
+button.WARNING {
+  text-decoration: line-through;
+  border-color: red;
+}
+
+button:hover.WARNING {
+  cursor: not-allowed;
+  color: red;
+  background-color: transparent;
 }

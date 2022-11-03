@@ -16,7 +16,7 @@ let variable = `
           <input type="number" id="powercorepcu" name="pcu" value="PCU generated" placeholder="PCU generated" /><br />
           <label for="cost">Cost:</label>
           <input type="number" id="powercorecost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="thruster" onsubmit='ThrusterInput()'>
           <label for="name">Thruster name:</label>
@@ -31,7 +31,7 @@ let variable = `
           <input type="text" id="thrusterpcu" name="pcu" value="PCU requirement" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="thrustercost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="armor" onsubmit='ArmorInput()'>
           <label for="name">Armor name:</label>
@@ -44,7 +44,7 @@ let variable = `
           <input type="text" id="armorspecialTD" name="specialTD" value="Turn Distance Debuff" /><br />
           <label for="cost">Cost (x Size Category):</label>
           <input type="text" id="armorcost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="computer" onsubmit='ComputerInput()' >
           <label for="name">Computer name:</label>
@@ -57,14 +57,14 @@ let variable = `
           <input type="text" id="computerpcu" name="pcu" value="PCU" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="computercost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="crewQuarter" onsubmit='CrewQuarterInput()'>
           <label for="name">Name:</label>
           <input type="text" id="crewQuartername" name="name" value="Name" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="crewQuartercost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="defensiveCountermeasure" onsubmit='DefenseInput()'>
           <label for="name">Name:</label>
@@ -75,7 +75,7 @@ let variable = `
           <input type="text" id="defensiveCountermeasurepcu" name="pcu" value="PCU cost" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="defensiveCountermeasurecost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="driftEngine" onsubmit='DriftInput()'>
           <label for="name">Name:</label>
@@ -88,7 +88,7 @@ let variable = `
           <input type="text" id="driftEnginemaxsize" name="maxsize" value="Maximum size allowed" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="driftEnginecost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="expansionBay" onsubmit='ExpansionInput()'>
           <label for="name">Name:</label>
@@ -97,14 +97,14 @@ let variable = `
           <input type="text" id="expansionBaypcu" name="pcu" value="PCU cost" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="expansionBaycost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="security" onsubmit='SecurityInput()'>
           <label for="name">Name:</label>
           <input type="text" id="securityname" name="name" value="Name" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="securitycost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="sensor" onsubmit='SensorInput()'>
           <label for="name">Name:</label>
@@ -115,7 +115,7 @@ let variable = `
           <input type="text" id="sensormodifier" name="modifier" value="Modifier" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="sensorcost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="shield" onsubmit='ShieldInput()'>
           <label for="name">Name:</label>
@@ -128,7 +128,7 @@ let variable = `
           <input type="text" id="shieldpcu" name="pcu" value="PCU cost" /><br />
           <label for="cost">Cost:</label>
           <input type="text" id="shieldcost" name="cost" value="BP Cost" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
         <form id="weapon" onsubmit='WeaponInput()'>
           <label for="name">Name:</label>
@@ -149,7 +149,7 @@ let variable = `
           <input type="text" id="weaponcost" name="cost" value="BP Cost" /><br />
           <label for="special">Special:</label>
           <input type="text" id="weaponspecial" name="special" value="Special Attributes" /><br />
-          <button type ='submit'>Click me</button>
+          <button type ='submit'>Save</button>
         </form>
       </div>
     </div>

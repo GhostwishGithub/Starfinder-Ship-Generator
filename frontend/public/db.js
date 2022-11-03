@@ -287,12 +287,12 @@ PowerCores=JSON.parse(`
 `);
 
 Securitys=JSON.parse(`
-[{"id":1, "security":"Anti-hacking systems", "cost":"3"},
- {"id":2, "security":"Antipersonnel weapon (heavy)", "cost":"0"},
- {"id":3, "security":"Antipersonnel weapon (longarm)", "cost":"0"},
- {"id":4, "security":"Biometric locks", "cost":"5"},
- {"id":5, "security":"Computer countermeasures", "cost":"0"},
- {"id":6, "security":"Self-destruct system", "cost":"0"}]
+[{"id":1, "security":"Anti-hacking systems", "cost":3},
+ {"id":2, "security":"Antipersonnel weapon (heavy)", "cost":0},
+ {"id":3, "security":"Antipersonnel weapon (longarm)", "cost":0},
+ {"id":4, "security":"Biometric locks", "cost":5},
+ {"id":5, "security":"Computer countermeasures", "cost":0},
+ {"id":6, "security":"Self-destruct system", "cost":0}]
 `);
 
 Sensors=JSON.parse(`

@@ -1,69 +1,73 @@
+//nothing here but us pigeons. coo
+// initializations, functions, pigeons
 let variable = `
+    <h1>Starship Generator Prototype for ${user.username}!</h1>
+    <h1>BPU: <span id='BPU'>No BPU set</span></h1>
+    <h1 id='pcuTotal'>PCU: 0</h1>
     <div class='container'>
-      <h1>Starship Generator Prototype for ${user.username}!</h1>
-      <h1 id='BPU'>BPU: No BPU set</h1>
-      <h1>PCU: 0</h1>
-      <label for='ships'>Edit a ship: </label>
-      <select id='ships' onchange=''>
-        <option selected='true' disabled='disabled'>No ship saved</option>
-      </select><br />
-      <label>Shipname:   
-        <input id='name' type='text' value='Name' />
-      </label>
-      <br />
-      <label for='tier'>Select a tier: </label>
-      <select id='tier' onchange='handleSelectedTier(this.value)'>
-        <option selected='true' disabled='disabled'>Choose Tier</option>
-      </select>
-      <br />
-      <form onsubmit='return false'>
-        <label>Manual Override:  
-          <input type='text' onchange='setTierBpuLimiter(this.value)'/>
+      <div class='custominput'>
+        <label for='ships'>Edit a ship: </label>
+        <select id='ships' onchange='loadShip(this.value)'>
+          <option selected='true' disabled='disabled'>No ship saved</option>
+        </select><br />
+        <label>Shipname:   
+          <input id='name' type='text' value='Name' />
         </label>
-      </form>
+        <br />
+        <form onsubmit='return false'>
+          <label>Manual Override:  
+            <input type='text' onchange='setTierBpuLimiter(this.value)'/>
+          </label>
+        </form>
+      </div>
       <div class='input'>
+        <label for='tier'>Select a tier: </label>
+        <select id='tier' onchange='handleSelectedTier(this.value)'>
+          <option selected='true' disabled='disabled'>Choose Tier</option>
+        </select>
+        <br />
         Frame: 
-        <select id='frame' onchange={handleSelectedFrame}>
+        <select id='frame' onchange='handleSelectedFrame(event)'>
           <option selected='true' disabled='disabled'>Choose Frame</option>   
         </select>
         <br />
         Core: 
-        <select id='power' onchange={handleSelectedCore}>
+        <select id='power' onchange='handleSelectedCore(event)'>
           <option selected='true' disabled='disabled'>Choose Core</option>   
         </select>
         <br />
         Thruster: 
-        <select id='thruster' onchange={handleSelectedThruster}>
+        <select id='thruster' onchange='handleSelectedThruster(event)'>
           <option selected='true' disabled='disabled'>Choose Thrusters</option>   
         </select>
         <br />
         Drift Engine: 
-        <select id='drift' onchange={handleSelectedDriftEngine}>
+        <select id='drift' onchange='handleSelectedDriftEngine(event)'>
           <option selected='true' disabled='disabled'>Choose Drift Engine</option>   
         </select>
         <br />
         Sensors:
-        <select id='sensor' onchange={handleSelectedSensor}>
+        <select id='sensor' onchange='handleSelectedSensor(event)'>
           <option selected='true' disabled='disabled'>Choose Sensor</option>
         </select>
         <br />
         <br />
         Computers:
-        <select id='computer' onchange={handleSelectedComputer}>
+        <select id='computer' onchange='handleSelectedComputer(event)'>
         </select>
         <br />
         Crew Quarters: 
-        <select id='crewquarter' onchange={handleSelectedCrewQuarter}>
+        <select id='crewquarter' onchange='handleSelectedCrewQuarter(event)'>
         </select>
         <br />
         <br />
         Armor: 
-        <select id='armor' onchange={handleSelectedArmor}>
+        <select id='armor' onchange='handleSelectedArmor(event)'>
           <option selected='true' disabled='disabled'>Choose Armor</option>
         </select>
         <br />
         Defensive Countermeasures: 
-        <select id='defense' onchange={handleSelectedDefenseiveCountermeasure}>
+        <select id='defense' onchange='handleSelectedDefenseiveCountermeasure(event)'>
           <option selected='true' disabled='disabled'>Choose Defenses</option>
         </select>
         <br />
@@ -73,35 +77,39 @@ let variable = `
         </select>
         <br />
         &nbsp;
-        <select id='longarm' style='display:none' onchange={handleLongarmCosts}>
+        <select id='longarm' style='display:none' onchange='handleLongarmCosts(event)'>
           <option selected='true' disabled='disabled'>Choose Longarm Turret</option>
         </select>
-        <select id='heavy' style='display:none' onchange={handleHeavyCosts}>
+        <select id='heavy' style='display:none' onchange='handleHeavyCosts(event)'>
           <option selected='true' disabled='disabled'>Choose Heavy Turret</option>
         </select>
         <br />
         Shields: 
-        <select id='shield' onchange={handleSelectedShield}>
+        <select id='shield' onchange='handleSelectedShield(event)'>
           <option selected='true' disabled='disabled'>Choose Shields</option>
         </select>
         <br />
         Weapons: 
-        <select id='weapon' multiple onchange={handleSelectedWeapon}>
+        <select id='weapon' multiple onchange='handleSelectedWeapon(event)'>
         </select>
         <br />
         Expansion Bay: 
-        <select id='expansionbay' multiple onchange={handleSelectedExpansionBay}>
+        <select id='expansionbay' multiple onchange='handleSelectedExpansionBay(event)'>
         </select>
         <br />
-        <button type='submit' onclick='handleSaving()'>Save</button>
-        <button type='submit' onclick='handlePrinting()'>PRINT</button>
+        <button type='submit' id='savebutton' onclick='handleSaving()'>Save</button>
+        <button type='submit' id='printbutton' onclick='handlePrinting()'>PRINT</button>
       </div>
     </div>
     <div id='printOut'>
 
     </div>`
     
-
+// END OF HTML
+// BEGINNING OF MADNESS
+// THIS IS SPARTA
+// what the dog doin tho
+// And initializations
 document.getElementById("root").insertAdjacentHTML("afterbegin", variable);
 
 let shipSelect = document.getElementById("ships");
@@ -111,7 +119,6 @@ for (ship in user.ships){
     option.text = ship;
     shipSelect.appendChild(option);
 }
-
 let tiersSelect = document.getElementById("tier");
 let increment = 0;
 for (tier of Tiers){
@@ -121,7 +128,6 @@ for (tier of Tiers){
     tiersSelect.appendChild(option);
 }
 increment = 0;
-// repeat this process for all of the select options - add in BPU and PCU counter later
 let frameSelect = document.getElementById("frame");
 for (frame of Frames){
   let option = document.createElement("option");
@@ -294,13 +300,136 @@ for (expansionbay of ExpansionBays){
   expansionbaySelect.appendChild(option);
 }
 increment = 0;
+// Global variable list
 let tierBpuLimiter = 0;
+let pcuCounter = 0;
+let shipSize = '';
 
 function setTierBpuLimiter(value) {
     tierBpuLimiter = value;
-    document.getElementById("BPU").innerText = "BPU: " + tierBpuLimiter;
+    setbpuCounter()
+}
+// Here there be functions
+// Onchange creation functions
+
+function setpcuCounter(value) {
+  pcuCounter = value;
+  document.getElementById("pcuTotal").innerText = "PCU: " + pcuCounter;
 }
 
+function setbpuCounter() {
+  let object = getDocumentValues();
+  let totalModifier = 0;
+  for (key in object) {
+    let bpuNonsense = object[key]
+    if (bpuNonsense != undefined){
+      if (bpuNonsense ?.[0]!=undefined){
+        for (itr of bpuNonsense) {
+          totalModifier+=itr.cost
+        }
+      }
+      else if (bpuNonsense?.cost!=undefined){
+          // Computer Countermeasures is calculated by ship tier /2. (that is how the computer's computer tier is determined)
+          // Self destruct is calculated by 5 * ship size (use case statement)
+          // heavy weapons is HEAVEH WEEPUN GUI (5 + item level)
+          // drift engine is cost * size category
+          console.log(key);
+        if (key == 'security' && object.tier!=undefined){ 
+          if (bpuNonsense.id==5){
+            totalModifier += object.tier.tier/2
+          } else if (bpuNonsense.id==6 && object.frame!=undefined){
+            totalModifier += (swapShipSize(shipSize)*5)
+          }
+          totalModifier+=parseInt(bpuNonsense.cost);
+        } else if (key=='drift') {
+          totalModifier+=parseInt(bpuNonsense.cost)*swapShipSize(shipSize);
+        } else {
+          totalModifier+=parseInt(bpuNonsense.cost);
+        }
+      } else if (bpuNonsense.level!=undefined) {
+        if (key == 'heavy'){
+          totalModifier+=bpuNonsense.level+5;
+        } else {
+          totalModifier+=bpuNonsense.level;
+        }
+      }
+    }
+  }
+  document.getElementById("BPU").innerText = (tierBpuLimiter-totalModifier);
+  if (tierBpuLimiter - totalModifier < 0){
+    document.getElementById("BPU").classList.add('WARNING');
+    document.getElementById("savebutton").classList.add('WARNING');
+    document.getElementById("printbutton").classList.add('WARNING');
+    document.getElementById("savebutton").disabled=true
+    document.getElementById("printbutton").disabled=true
+  } else {
+    document.getElementById("BPU").classList.remove('WARNING');
+    document.getElementById("savebutton").classList.remove('WARNING');
+    document.getElementById("printbutton").classList.remove('WARNING');
+    document.getElementById("savebutton").disabled=false
+    document.getElementById("printbutton").disabled=false
+  }
+}
+
+function getDocumentValues() {
+  let object ={
+    tier:Tiers?.[document.getElementById('tier').value],
+    frame:Frames?.[document.getElementById('frame').value],
+    power:PowerCores?.[document.getElementById('power').value],
+    thruster:Thrusters?.[document.getElementById('thruster').value],
+    drift:DriftEngine?.[document.getElementById('drift').value],
+    sensor:Sensors?.[document.getElementById('sensor').value],
+    computer:Computers?.[document.getElementById('computer').value],
+    crewquarter:CrewQuarters?.[document.getElementById('crewquarter').value],
+    armor:Armors?.[document.getElementById('armor').value],
+    defense:DefensiveCountermeasures?.[document.getElementById('defense').value],
+    security:Securitys?.[document.getElementById('security').value],
+    shield:Shields?.[document.getElementById('shield').value],
+    longarm:PersonnelWeaponsLongarms?.[document.getElementById('longarm').value],
+    heavy:PersonnelWeaponsHeavys?.[document.getElementById('heavy').value],
+    weapon:[],
+    expansionbay:[]
+  }
+  let weaponsAR = document.getElementById('weapon').selectedOptions;
+  for (option of weaponsAR) {
+    let selectedOption = Weapons[option.value];
+    object.weapon.push(selectedOption)
+  }
+  let expansionAR = document.getElementById('expansionbay').selectedOptions;
+  for (option of expansionAR) {
+    let selectedOption = ExpansionBays[option.value];
+    object.expansionbay.push(selectedOption)
+  }
+  return object;
+}
+
+function loadShip(value) {
+  let ship=user.ships[value]
+  console.log(parseInt(ship.tier)+1)
+  document.getElementById('name').value=ship.name
+  document.getElementById('tier').selectedIndex=parseInt(ship.tier)+1
+  document.getElementById('frame').selectedIndex=parseInt(ship.frame)+1
+  document.getElementById('power').selectedIndex=parseInt(ship.power)+1
+  document.getElementById('thruster').selectedIndex=parseInt(ship.thruster)+1
+  document.getElementById('drift').selectedIndex=parseInt(ship.drift)+1
+  document.getElementById('sensor').selectedIndex=parseInt(ship.sensor)+1
+  document.getElementById('computer').selectedIndex=ship.computer
+  document.getElementById('crewquarter').selectedIndex=ship.crewquarter
+  document.getElementById('armor').selectedIndex=parseInt(ship.armor)+1
+  document.getElementById('defense').selectedIndex=parseInt(ship.defense)+1
+  document.getElementById('security').selectedIndex=parseInt(ship.security)+1
+  document.getElementById('shield').selectedIndex=parseInt(ship.shield)+1
+  document.getElementById('longarm').selectedIndex=ship.longarm
+  document.getElementById('heavy').selectedIndex=ship.heavy
+  let weaponsAR = document.getElementById('weapon').options;
+  for (option of ship.weapon) {
+    weaponsAR[parseInt(option)].selected = true;
+  }
+  let expansionAR = document.getElementById('expansionbay').options;
+  for (option of ship.expansionbay) {
+    expansionAR[parseInt(option)].selected = true;
+  }
+}
 
 
 function handleSelectedTier(value) {
@@ -309,31 +438,26 @@ function handleSelectedTier(value) {
     setTierBpuLimiter(selectedOption);
 }
 function handleSelectedFrame(event) {
-  let selectedOption = Frames[event.target.value].frame;
-  //Create an array of items.
-  let itemsPassedInToArray = selectedOption.split(",");
-  //creates an array of the values passed in ex: ["size","bp"]
-  //this splits the array at the comma, effectively making two stings
-  let size = itemsPassedInToArray[0];
-  setShipSize(size);
+  let selectedOption = Frames[event.target.value];
+  shipSize = selectedOption.size;
   //this takes the first variable, which is still a string
-  let cost = parseInt(itemsPassedInToArray[1]);
+  let cost = parseInt(selectedOption.cost);
   //this takes the second variable, but makes it an Int
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function handleSelectedCore(event) {
   let selectedOption = PowerCores[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
   setpcuCounter(pcu);
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function handleSelectedThruster(event) {
   let selectedOption = PowerCores[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
   setpcuCounter((pcuCounter) => pcuCounter - pcu);
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function swapShipSize(event) {
   let sizeCategory = 0;
@@ -363,33 +487,33 @@ function swapShipSize(event) {
 
 function handleSelectedDriftEngine(event) {
   let selectedOption = DriftEngine[event.target.value].cost * swapShipSize();
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  setbpuCounter()
 }
 function handleSelectedSensor(event) {
   let selectedOption = Sensors[event.target.value].cost;
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  setbpuCounter()
 }
 function handleSelectedArmor(event) {
   let selectedOption = Armors[event.target.value].cost * swapShipSize();
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  setbpuCounter()
 }
 function handleSelectedComputer(event) {
   let selectedOption = Computers[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
   setpcuCounter((pcuCounter) => pcuCounter - pcu);
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function handleSelectedCrewQuarter(event) {
   let selectedOption = CrewQuarters[event.target.value].cost;
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  setbpuCounter()
 }
 function handleSelectedDefenseiveCountermeasure(event) {
   let selectedOption = DefensiveCountermeasures[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
   setpcuCounter((pcuCounter) => pcuCounter - pcu);
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function handleSelectedExpansionBay(event) {
   let array = event.target.selectedOptions;
@@ -398,7 +522,7 @@ function handleSelectedExpansionBay(event) {
     let cost = selectedOption.cost;
     let pcu = selectedOption.pcu;
     setpcuCounter((pcuCounter) => pcuCounter - pcu);
-    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+    setbpuCounter()
   }
 }
 function handleSelectedShield(event) {
@@ -406,7 +530,7 @@ function handleSelectedShield(event) {
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
   setpcuCounter((pcuCounter) => pcuCounter - pcu);
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+  setbpuCounter()
 }
 function handleSelectedSecurity(event) {
   let selectedOption = Securitys[event.target.value];
@@ -414,7 +538,6 @@ function handleSelectedSecurity(event) {
     document.getElementById("longarm").style.display = '';
     document.getElementById("heavy").style.display = 'none';
     document.getElementById("heavy").selectedIndex = 0;
-    //TODO: fix this so it doesn't retain values
   }
   else if (selectedOption.security === 'Antipersonnel weapon (heavy)') {
     document.getElementById("heavy").style.display = '';
@@ -427,14 +550,15 @@ function handleSelectedSecurity(event) {
     document.getElementById("heavy").selectedIndex = 0;
     document.getElementById("longarm").selectedIndex = 0;
   }
+  setbpuCounter()
 }
 function handleHeavyCosts(event){
   let selectedOption = PersonnelWeaponsHeavys[event.target.value].cost;
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - (5 + parseInt(selectedOption)));
+  setbpuCounter()
 }
 function handleLongarmCosts(event){
   let selectedOption = PersonnelWeaponsLongarms[event.target.value].cost;
-  setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - selectedOption);
+  setbpuCounter()
 }
 function handleSelectedWeapon(event) {
   let array = event.target.selectedOptions;
@@ -443,7 +567,7 @@ function handleSelectedWeapon(event) {
     let cost = selectedOption.cost;
     let pcu = selectedOption.pcu;
     setpcuCounter((pcuCounter) => pcuCounter - pcu);
-    setTierBpuLimiter((tierBpuLimiter) => tierBpuLimiter - cost);
+    setbpuCounter()
   }
 }
 function handlePrinting(value) {
@@ -480,7 +604,6 @@ function handlePrinting(value) {
   if (object.security === 'Antipersonnel weapon (heavy)') {
     object.security = PersonnelWeaponsHeavys[document.getElementById('heavy').value].weapon;
   }
-  //Print the object into the printOut div.
   let computers = object.computer.bonus + object.sensor.modifier;
   let piloting = object.thruster.piloting + object.frame.maneuverability;
   let output = `
