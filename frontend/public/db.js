@@ -141,7 +141,7 @@ Frames=JSON.parse(`
  {"id":11, "frame":"Cruiser", "size":"Huge", "maneuverability":"average (+0 Piloting, turn 2)", "hp":180, "increment":25, "dt":5, "ct":36, "mounts":"forward arc (1 capital), port arc (1 light), starboard arc (1 light), turret (1 heavy)", "expansionBays":6, "minimumCrew":20, "maximumCrew":100, "cost":60},
  {"id":12, "frame":"Carrier", "size":"Gargantuan", "maneuverability":"poor (-1 piloting, turn 3)", "hp":240, "increment":30, "dt":10, "ct":48, "mounts":"forward arc (1 capital), port arc (3 heavy), starboard arc (3 heavy), turret (2 light)", "expansionBays":10, "minimumCrew":75, "maximumCrew":200, "cost":120},
  {"id":13, "frame":"Battleship", "size":"Gargantuan", "maneuverability":"average (+0 Piloting, turn 2)", "hp":280, "increment":40, "dt":10, "ct":56, "mounts":"forward arc (1 capital, 2 heavy), port arc (2 heavy, 1 light), starboard arc (2 heavy, 1 light), aft arc (1 light), turret (2 heavy)", "expansionBays":8, "minimumCrew":100, "maximumCrew":300, "cost":150},
- {"id":14, "frame":"Dreadnaught", "size":"Colossal", "maneuverability":"clumsy (=2 Piloting, turn 4)", "hp":400, "increment":50, "dt":15, "ct":80, "mounts":"forward arc (2 capital, 2 heavy), port arc (1 capital, 3 heavy), starboard arc (1 capital, 3 heavy), turret (4 light)", "expansionBays":20, "minimumCrew":125, "maximumCrew":500, "cost":200}]
+ {"id":14, "frame":"Dreadnaught", "size":"Colossal", "maneuverability":"clumsy (-2 Piloting, turn 4)", "hp":400, "increment":50, "dt":15, "ct":80, "mounts":"forward arc (2 capital, 2 heavy), port arc (1 capital, 3 heavy), starboard arc (1 capital, 3 heavy), turret (4 light)", "expansionBays":20, "minimumCrew":125, "maximumCrew":500, "cost":200}]
 `);
 
 PersonnelWeaponsHeavys=JSON.parse(`

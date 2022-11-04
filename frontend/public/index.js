@@ -3,7 +3,7 @@
 let variable = `
     <h1>Starship Generator Prototype for ${user.username}!</h1>
     <h1>BPU: <span id='BPU'>No BPU set</span></h1>
-    <h1 id='pcuTotal'>PCU: 0</h1>
+    <h1>PCU: <span id='pcuTotal'>No PCU set</span></h1>
     <div class='container'>
       <div class='custominput'>
         <label for='ships'>Edit a ship: </label>
@@ -304,6 +304,8 @@ increment = 0;
 let tierBpuLimiter = 0;
 let pcuCounter = 0;
 let shipSize = '';
+let pcuLock = false;
+let bpuLock = false;
 
 function setTierBpuLimiter(value) {
     tierBpuLimiter = value;
@@ -312,9 +314,48 @@ function setTierBpuLimiter(value) {
 // Here there be functions
 // Onchange creation functions
 
-function setpcuCounter(value) {
+function setpcuMax(value) {
   pcuCounter = value;
-  document.getElementById("pcuTotal").innerText = "PCU: " + pcuCounter;
+  setpcuCounter();
+}
+
+function setpcuCounter() {
+  let object = getDocumentValues();
+  let totalModifier = 0;
+  let driftThreshold = 0;
+  let thrusterThreshold = 0;
+  for (key in object) {
+    let pcuNonsense = object[key]
+    if (pcuNonsense != undefined){
+      if (pcuNonsense ?.[0]!=undefined) {
+        for (itr of pcuNonsense) {
+          totalModifier+=itr.pcu
+        }
+      }
+      else if (pcuNonsense?.pcu!=undefined && key!='power') {
+        totalModifier += pcuNonsense.pcu;
+        if (key == 'computer') {
+          driftThreshold+=pcuNonsense.pcu;
+          thrusterThreshold+=pcuNonsense.pcu;
+        } else if (key == 'thruster') {
+          thrusterThreshold+=pcuNonsense.pcu;
+        }
+      }
+      else if (pcuNonsense?.pcuRequirement!=undefined) {
+        driftThreshold += pcuNonsense.pcuRequirement;
+      }
+    }
+  }
+  document.getElementById("pcuTotal").innerText = (pcuCounter-totalModifier)+' ('+(pcuCounter-driftThreshold)+')'+' ('+(pcuCounter-thrusterThreshold)+')';;
+  if (pcuCounter - totalModifier < 0 || pcuCounter-driftThreshold<0 || pcuCounter-thrusterThreshold<0){
+    document.getElementById("pcuTotal").classList.add('WARNING');
+    pcuLock = true;
+    lockSavePrint();
+  } else {
+    document.getElementById("pcuTotal").classList.remove('WARNING');
+    pcuLock = false;
+    lockSavePrint();
+  }
 }
 
 function setbpuCounter() {
@@ -329,11 +370,6 @@ function setbpuCounter() {
         }
       }
       else if (bpuNonsense?.cost!=undefined){
-          // Computer Countermeasures is calculated by ship tier /2. (that is how the computer's computer tier is determined)
-          // Self destruct is calculated by 5 * ship size (use case statement)
-          // heavy weapons is HEAVEH WEEPUN GUI (5 + item level)
-          // drift engine is cost * size category
-          console.log(key);
         if (key == 'security' && object.tier!=undefined){ 
           if (bpuNonsense.id==5){
             totalModifier += object.tier.tier/2
@@ -358,12 +394,22 @@ function setbpuCounter() {
   document.getElementById("BPU").innerText = (tierBpuLimiter-totalModifier);
   if (tierBpuLimiter - totalModifier < 0){
     document.getElementById("BPU").classList.add('WARNING');
+    bpuLock = true;
+    lockSavePrint();
+  } else {
+    document.getElementById("BPU").classList.remove('WARNING');
+    bpuLock = false;
+    lockSavePrint();
+  }
+}
+
+function lockSavePrint() {
+  if (pcuLock || bpuLock){
     document.getElementById("savebutton").classList.add('WARNING');
     document.getElementById("printbutton").classList.add('WARNING');
     document.getElementById("savebutton").disabled=true
     document.getElementById("printbutton").disabled=true
   } else {
-    document.getElementById("BPU").classList.remove('WARNING');
     document.getElementById("savebutton").classList.remove('WARNING');
     document.getElementById("printbutton").classList.remove('WARNING');
     document.getElementById("savebutton").disabled=false
@@ -449,14 +495,14 @@ function handleSelectedCore(event) {
   let selectedOption = PowerCores[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
-  setpcuCounter(pcu);
+  setpcuMax(pcu);
   setbpuCounter()
 }
 function handleSelectedThruster(event) {
   let selectedOption = PowerCores[event.target.value];
   let cost = selectedOption.cost;
   let pcu = selectedOption.pcu;
-  setpcuCounter((pcuCounter) => pcuCounter - pcu);
+  setpcuCounter();
   setbpuCounter()
 }
 function swapShipSize(event) {
@@ -488,6 +534,7 @@ function swapShipSize(event) {
 function handleSelectedDriftEngine(event) {
   let selectedOption = DriftEngine[event.target.value].cost * swapShipSize();
   setbpuCounter()
+  setpcuCounter()
 }
 function handleSelectedSensor(event) {
   let selectedOption = Sensors[event.target.value].cost;
@@ -577,14 +624,14 @@ function handlePrinting(value) {
     frame:Frames[document.getElementById('frame').value],
     power:PowerCores[document.getElementById('power').value],
     thruster:Thrusters[document.getElementById('thruster').value],
-    drift:DriftEngine[document.getElementById('drift').value],
+    drift:DriftEngine?.[document.getElementById('drift').value],
     sensor:Sensors[document.getElementById('sensor').value],
     computer:Computers[document.getElementById('computer').value],
     crewquarter:CrewQuarters[document.getElementById('crewquarter').value].crewQuarters,
-    armor:Armors[document.getElementById('armor').value],
-    defense:DefensiveCountermeasures[document.getElementById('defense').value],
-    security:Securitys[document.getElementById('security').value].security,
-    shield:Shields[document.getElementById('shield').value].shield,
+    armor:Armors?.[document.getElementById('armor').value],
+    defense:DefensiveCountermeasures?.[document.getElementById('defense').value],
+    security:Securitys?.[document.getElementById('security').value]?.security,
+    shield:Shields?.[document.getElementById('shield').value]?.shield,
     weapon:"",
     expansionbay:""
   }
@@ -610,15 +657,15 @@ function handlePrinting(value) {
   <h1>${object.name} TIER ${object.tier}</h1>
   <pre><blockquote>
   ${object.frame.size} ${object.frame.frame}
-  Speed ${object.thruster.speed}; Maneuverability ${object.frame.maneuverability}; Drift ${object.drift.rating}
-  AC ${object.armor.ac}; TL ${object.defense.TLbonus}
+  Speed ${object.thruster.speed}; Maneuverability ${object.frame.maneuverability}; Drift ${object.drift?.rating??0}
+  AC(Modifier) ${object?.armor?.ac??0}; TL ${object.defense?.TLbonus??0}
   HP ${object.frame.hp}; DT ${object.frame.dt}; CT ${object.frame.ct}
-  Shields ${object.shield}
+  Shields ${object.shield??'None'}
   Attack ${object.weapon}
-  Power Core ${object.power.core} (${object.power.pcu} PCU); Drift Engine ${object.drift.driftEngine};
+  Power Core ${object.power.core} (${object.power.pcu} PCU); Drift Engine ${object.drift?.driftEngine??'None'};
   Systems ${object.sensor.sensors}, ${object.computer.computer},
-  crew quarters (${object.crewquarter}), ${object.armor.armor}, ${object.defense.defensiveCountermeasures}, security
-  (${object.security}); 
+  crew quarters (${object.crewquarter}), ${object.armor?.armor??'No armor'}, ${object.defense?.defensiveCountermeasures??'No defemses'},
+  (${object.security??'No security'}); 
   Expansion Bays ${object.expansionbay}
   Modifiers ${computers} Computers, ${piloting} Piloting; Complement ${object.frame.maximumCrew}
   </blockquote></pre>`;
