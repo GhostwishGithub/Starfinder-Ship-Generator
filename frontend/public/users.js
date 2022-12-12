@@ -3,7 +3,7 @@ let variable = `
     <br />
         <div class='input'>
             <br />
-        <form id="powercore" onsubmit='PowercoreInput()'>
+        <form id="login" onsubmit='LoginInput()'>
             <label for="name">user name:</label>
             <input type="text" id="username" name="name" value="Name" /><br />
             <input type="password" id="password" name="password" value="password" />
@@ -16,7 +16,7 @@ let variable = `
 `
 document.getElementById("root").insertAdjacentHTML("afterbegin", variable);
 
-function PowercoreInput() {
+function LoginInput() {
     user.username = document.getElementById('username').value
     SaveToStorage();
 }
