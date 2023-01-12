@@ -1,0 +1,26 @@
+Major Issues
+====
+
+- React refuses to stop screwing stuff up, misc. code everywhere, project is unservicable as a capstone, project needs to be restarted
+- future project: python back end, java front end
+-* python > django > javascript, possibly adapt existing front end, it still works!
+-* document for starting over: https://devcodecamp.helpkit.so/tutorials/eH7WzkXpb926weLhL3QQZP/create-a-django-rest-framework-api-project/hjD2qPJE4ihqW2W96yT8Fw
+-* old python backend seems functional if incomplete
+-* JS frontend could be reworked?
+ - Login page is dysfunctional
+ 
+ Minor Issues
+ ====
+ - Armor not calculated correctly 
+ -* (size)
+ - Need multiple Security entries 
+ -* (can have multiple systems)
+ - Check weapons and expansion bays - are they actually working?
+ - Weapon mounts for hulls
+ 
+ NOTES:
+ "ValueError: make_aware expects a naive datetime, got blah blah" is fixed by pipenv install tzdata, then go to settings.py and set USE_TZ = to false.
+ 
+ user
+ ghostwish83@gmail.com
+ password: password
